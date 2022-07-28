@@ -1,0 +1,103 @@
+.duoinavbar {
+  background-color: #cf111a;
+}
+
+.benphai.float-right {
+  line-height: 40px;
+  font-size: 14px;
+}
+
+.noidungheader {
+  padding-top: 8px;
+  .title-cat {
+    padding-left: 14px;
+  }
+}
+
+.categoryheader {
+  height: 40px;
+  background-color: #aa1318;
+}
+
+.duoinavbar .container .row {
+  height: 40px;
+}
+
+.duoinavbar {
+  height: 40px;
+}
+
+.hotline {
+  display: inline-block;
+  position: relative;
+  margin-right: 11px;
+}
+
+.hotline:after {
+  content: "|";
+  position: absolute;
+  color: white;
+  top: -1px;
+  right: -10px;
+  font-size: 22px;
+}
+
+.benphai a {
+  color: white;
+}
+/* het css .duoinavbar  */
+/*categories*/
+.categories {
+  margin-top: 8px;
+  display: none;
+}
+.noidungheader:hover {
+  cursor: pointer;
+  .categories {
+    z-index: 99;
+    display: block;
+  }
+}
+/* danhmucan */
+
+.categorycontent ul li ul li:first-child {
+  margin-top: 3px;
+}
+
+.categorycontent ul li ul li.liheader {
+  margin-top: 16px;
+}
+
+ul li a.header {
+  font-size: 15px;
+  padding-left: 33px;
+  color: #cf111a;
+}
+
+.categorycontent ul li ul .content {
+  float: left;
+  margin-left: 19px;
+  width: 300px;
+  height: 265px;
+}
+.content {
+  min-height: 100vh;
+}
+.categorycontent ul li ul .content.phai {
+  margin-left: 100px;
+}
+
+.categorycontent ul li ul .content li a:hover {
+  color: #f5a623;
+}
+
+.categorycontent {
+  display: none;
+}
+
+.categoryheader:hover .categorycontent {
+  display: block;
+}
+.contact {
+  min-height: 70vh;
+}

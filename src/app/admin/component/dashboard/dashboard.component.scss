@@ -1,0 +1,16 @@
+.stats-cards {
+  .mat-card {
+    overflow: hidden;
+  }
+}
+h4 {
+  font-weight: 700;
+  font-size: 22px;
+}
+table {
+  width: 100%;
+}
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+mat-card {
+  margin-left: -110px;
+}

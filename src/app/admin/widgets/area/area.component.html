@@ -1,0 +1,24 @@
+<mat-form-field
+  appearance="fill"
+  style="float: left; left: 0px; margin: 0px 0px -20px -16px; z-index: 99"
+>
+  <!-- <mat-label>Chọn </mat-label> -->
+  <select (change)="onChange($event)" matNativeControl required>
+    <option value="week">Trong tuần</option>
+    <option value="month">Trong tháng</option>
+    <option value="year">Trong năm</option>
+  </select>
+</mat-form-field>
+<highcharts-chart
+  [Highcharts]="Highcharts"
+  [options]="chartOptions"
+  style="
+    width: 50%;
+    height: 400px;
+    float: left;
+
+    margin-top: 54px;
+    margin-left: -230px;
+    padding: 0 30px;
+  "
+></highcharts-chart>

@@ -1,0 +1,54 @@
+<div class="categorycontent">
+  <ul>
+    <li *ngFor="let cat of categoryList">
+      <a
+        [routerLink]="[
+          '/san-pham-nhom/' + ChangeProductName(cat.CatName) + '/' + cat.CatId
+        ]"
+        routerLinkActive="router-link-active"
+        (click)="onClick()"
+      >
+        {{ cat.CatName }}</a
+      >
+      <i class="fa fa-chevron-right float-right"></i>
+      <ul>
+        <li class="liheader">
+          <a
+            class="header text-uppercase"
+            [routerLink]="[
+              '/san-pham-nhom/' +
+                ChangeProductName(cat.CatName) +
+                '/' +
+                cat.CatId
+            ]"
+            (click)="onClick()"
+          >
+            {{ cat.CatName }}</a
+          >
+        </li>
+        <div class="content trai">
+          <li *ngFor="let catChild of cat.CategoryChild">
+            <a
+              [routerLink]="[
+                '/san-pham-nhom/' +
+                  ChangeProductName(catChild.CatName) +
+                  '/' +
+                  catChild.CatId
+              ]"
+              (click)="onClick()"
+              >{{ catChild.CatName }}</a
+            >
+          </li>
+        </div>
+      </ul>
+    </li>
+    <li>
+      <a
+        [routerLink]="['/tat-ca-san-pham']"
+        routerLinkActive="router-link-active"
+      >
+        Xem tất cả sản phẩm</a
+      >
+    </li>
+  </ul>
+</div>

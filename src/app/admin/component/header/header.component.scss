@@ -1,0 +1,50 @@
+.header {
+  background-color: hsl(200, 19%, 18%);
+
+  border: none;
+}
+.nav-menu {
+  height: 60px;
+  margin-top: -16px;
+  border: none;
+}
+ul {
+  padding: 0px;
+  list-style: none;
+  color: rgb(209, 208, 208);
+}
+ul li:hover {
+  cursor: pointer;
+  color: rgb(255, 255, 255);
+}
+ul li {
+  float: left;
+  text-align: center;
+  margin-left: 30px;
+  line-height: 60px;
+}
+
+li i {
+  font-size: 20px;
+  color: rgb(202, 202, 202);
+}
+li:hover i {
+  color: rgb(240, 240, 240);
+}
+
+//search
+.search {
+  padding-left: 35%;
+  padding-right: 35%;
+  align-items: center;
+  text-align: center;
+  border-bottom: 0.5px solid rgb(206, 206, 206);
+}
+//nav-menu-right
+.nav-right {
+  float: right;
+  margin-right: 30px;
+}
+.nav-right li:first-child {
+  color: rgb(139, 139, 139);
+}

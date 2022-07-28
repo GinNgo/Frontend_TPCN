@@ -1,0 +1,560 @@
+/* .duoinavbar  */
+.duoinavbar {
+  background-color: #cf111a;
+}
+
+.benphai.float-right {
+  line-height: 40px;
+  font-size: 14px;
+}
+
+.noidungheader {
+  padding-top: 8px;
+  .title-cat {
+    padding-left: 14px;
+  }
+}
+
+.categoryheader {
+  height: 40px;
+  background-color: #aa1318;
+}
+
+.duoinavbar .container .row {
+  height: 40px;
+}
+
+.duoinavbar {
+  height: 40px;
+}
+
+.hotline {
+  display: inline-block;
+  position: relative;
+  margin-right: 11px;
+}
+
+.hotline:after {
+  content: "|";
+  position: absolute;
+  color: white;
+  top: -1px;
+  right: -10px;
+  font-size: 22px;
+}
+
+.benphai a {
+  color: white;
+}
+@media only screen and (max-width: 1200px) {
+  .categories {
+    display: none;
+  }
+
+  .noidungheader {
+    width: max-content;
+    padding-top: 8px;
+  }
+
+  .categoryheader {
+    height: 40px;
+    background-color: #aa1318;
+    padding-right: 8px;
+    width: max-content;
+  }
+
+  .noidungheader:hover {
+    cursor: pointer;
+  }
+
+  .noidungheader:hover .categories {
+    width: 100%;
+
+    z-index: 99;
+    display: block;
+  }
+}
+@media only screen and (max-width: 992px) {
+  .categories {
+    display: none;
+  }
+
+  .noidungheader {
+    padding-top: 8px;
+  }
+
+  .categoryheader {
+    height: 40px;
+    padding-right: 8px;
+    width: max-content;
+  }
+
+  .noidungheader:hover {
+    cursor: pointer;
+  }
+
+  .noidungheader:hover .categories {
+    width: 100%;
+
+    z-index: 99;
+    display: block;
+  }
+}
+/* het css .duoinavbar  */
+/*categories*/
+.categories {
+  margin-top: 8px;
+  display: none;
+}
+.noidungheader:hover {
+  cursor: pointer;
+  .categories {
+    z-index: 99;
+    display: block;
+  }
+}
+/* danhmucan */
+
+.categorycontent ul li ul li:first-child {
+  margin-top: 3px;
+}
+
+.categorycontent ul li ul li.liheader {
+  margin-top: 16px;
+}
+
+ul li a.header {
+  font-size: 15px;
+  padding-left: 33px;
+  color: #cf111a;
+}
+
+.categorycontent ul li ul .content {
+  float: left;
+  margin-left: 19px;
+  width: 300px;
+  height: 265px;
+}
+
+.categorycontent ul li ul .content.phai {
+  margin-left: 100px;
+}
+
+.categorycontent ul li ul .content li a:hover {
+  color: #f5a623;
+}
+
+.categorycontent {
+  display: none;
+}
+
+.categoryheader:hover .categorycontent {
+  display: block;
+}
+
+.breadcrumbbar {
+  height: 40px;
+}
+
+.breadcrumb {
+  height: 40px;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  line-height: 40px;
+  content: ">";
+}
+.breadcrumb-item:hover {
+  cursor: pointer;
+}
+
+.breadcrumb-item a {
+  font-size: 12px;
+  color: #666666;
+  text-decoration: none;
+  transition: 0.2s;
+  line-height: 40px;
+}
+
+.breadcrumb-item a:hover {
+  color: #f5a623;
+}
+
+.breadcrumb-item.active a {
+  color: #f5a623;
+}
+/* het css cho breadcrumb  */
+
+/* css cho product-page  */
+.product-detail .product-img {
+  transition: 0.2s;
+}
+
+.product-detail .thumb-img {
+  height: 100%;
+  width: 74px;
+  border: 1px solid #f2f2f2;
+}
+
+.product-detail .list-anhchitiet {
+  height: 76px;
+}
+.product-detail .list-anhchitiet:hover {
+  cursor: pointer;
+}
+.product-detail .thumb-img:hover {
+  cursor: pointer;
+}
+
+.product-detail .thumb-img.vienvang {
+  border: 1px solid #f5a623;
+}
+/* het css cho product-page  */
+/* css cho khoi thong tin cua  product-page*/
+.khoithongtin .header hr {
+  margin-top: 10px;
+}
+
+.khoithongtin .rate {
+  color: #d9d9d5;
+  font-size: 14px;
+}
+
+.khoithongtin .rate .active {
+  color: #f5a623;
+}
+
+.khoithongtin .uudai .header {
+  margin-top: 5px;
+  padding: 10px 0px 2px 16px;
+  font-size: 13px;
+}
+
+.khoithongtin .header h4 {
+  font-weight: 400;
+  font-size: 22px;
+  margin-bottom: 5px;
+}
+
+.khoithongtin .gia {
+  font-size: 13px;
+}
+
+.khoithongtin .input-number .btn-spin {
+  background: white;
+  border: 1px solid #ebebeb;
+}
+
+.khoithongtin .input-number .btn-spin:hover {
+  cursor: pointer;
+  color: #2196f3;
+}
+
+.khoithongtin .input-number .soluongsp {
+  width: 38px;
+  border: 1px solid #ebebeb;
+}
+
+.khoithongtin .soluong label {
+  width: 101px;
+  font-size: 14px;
+  margin-top: 9px;
+}
+
+.thongtinsach a.tacgia {
+  color: #f5a623;
+  text-decoration: none;
+}
+
+.thongtinsach ul li {
+  margin-bottom: 5px;
+}
+
+.khoithongtin .thongtinsach ul {
+  list-style: none;
+  margin-bottom: 0px;
+}
+
+.khoithongtin .thongtinsach {
+  border: 1px solid #e5e5e5;
+  border-radius: 5px;
+  padding: 13px;
+  font-size: 13px;
+}
+
+.khoithongtin .uudai ul {
+  list-style: none;
+}
+
+.khoithongtin .uudai ul li::before {
+  content: "\2022";
+  color: #f5a623;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+  font-size: 15px;
+}
+
+.khoithongtin .uudai li a {
+  color: gray;
+}
+
+.khoithongtin .uudai li {
+  margin-left: 33px;
+  margin-bottom: 5px;
+}
+
+.khoithongtin .uudai {
+  background: #fef6e9;
+  border: 1px solid #f5a623;
+  border-radius: 5px;
+  font-size: 13px;
+}
+
+.khoithongtin .giaban {
+  margin-top: 7px;
+}
+
+.khoithongtin .giaban .giamoi {
+  width: max-content;
+  color: red;
+  font-size: 20px;
+  position: absolute;
+
+  left: 120px;
+}
+
+/* don vi tien  */
+.khoithongtin .giaban .donvitien {
+  color: red;
+  font-size: 26px;
+  position: absolute;
+  top: 12px;
+  left: 250px;
+  font-weight: bold;
+}
+
+.khoithongtin .giabia .giacu {
+  text-decoration: line-through;
+  color: #b8b8b8;
+}
+
+.khoithongtin .tietkiem {
+  margin-top: 7px;
+}
+
+.khoithongtin .tietkiem .sale {
+  background: #f5a623;
+  border-radius: 6px;
+  font-size: 11px;
+  color: white;
+  padding: 1px 4px;
+  position: absolute;
+  font-weight: bold;
+  left: 140px;
+}
+
+.khoithongtin small.share {
+  font-size: 15px;
+}
+
+.khoithongtin .huongdanmuahang {
+  color: #f7a623;
+  font-size: 13px;
+  margin: 10px 0px;
+  display: block;
+}
+
+.khoithongtin .nutmua {
+  background: linear-gradient(#f5a623, #fd8205);
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.khoithongtin .nutmua:hover {
+  box-shadow: 0px 11px 20px -10px #fd8205;
+}
+/*het css cho khoi thong tin cua product-page*/
+
+/* .product-description  */
+
+/* het css cho .product-description  */
+/* css cho _1khoi */
+
+/* css cho nut xem tat ca  */
+a.btn.btn-warning.btn-sm.text-white {
+  height: 25px;
+  width: 77px;
+  background: #f5a623;
+  font-size: 11px;
+}
+/* het css cho nut xem tat ca  */
+
+img.card-img-top.anh {
+  position: relative;
+  top: 15px;
+  transition: 0.3s;
+}
+
+ul span.text-muted {
+  font-size: 11px;
+  padding-top: 6px;
+  padding-left: 12px;
+  color: #919191 !important;
+}
+
+i.fa.fa-star {
+  font-size: 10px;
+  color: #bebebe;
+}
+
+li.active .fa-star {
+  color: #f5a623;
+}
+
+.sale {
+  width: max-content;
+  background: #f5a623;
+  border-radius: 6px;
+  font-size: 11px;
+  color: white;
+  padding: 1px 4px;
+}
+
+.giacu.text-muted {
+  font-size: 13px;
+  color: #919191 !important;
+}
+
+.giamoi {
+  color: red;
+  font-size: 14px;
+  font-weight: 500;
+  padding-right: 10px;
+}
+
+.gia.d-flex {
+  position: relative;
+}
+
+small.tacgia.text-muted {
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  transition: 0.3s;
+  padding: 3px 0px;
+}
+
+h3.card-title.ten {
+  font-weight: 400;
+  margin-bottom: 4px;
+  font-size: 15px;
+  height: 35px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  transition: 0.3s;
+}
+
+.card-body.noidungsp {
+  padding: 10px 10px 0px 10px;
+}
+
+.card:hover 
+
+/* het css cho _1khoi  */
+
+/* css cho margin slick */
+.card {
+  margin: 0 10px;
+}
+.product-container {
+  .container {
+    text-align: center;
+    .add-cart {
+      position: absolute;
+      width: 100%;
+      display: none;
+      margin-top: 10px;
+      margin-left: 10px;
+      z-index: 99;
+      i {
+        font-size: 60px;
+        color: rgb(13, 226, 155);
+      }
+    }
+    .card-item:hover .add-cart {
+      display: block;
+    }
+    .card-item {
+      text-align: left;
+      border: 0.5px solid rgb(97, 96, 96);
+      width: 70%;
+      display: inline-block;
+      margin-bottom: 5px;
+    }
+
+    .card-item:hover {
+      cursor: pointer;
+      .card-img-top {
+        top: 5px;
+      }
+      .ten {
+        color: #f5a623;
+      }
+    }
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .product-container {
+    height: 320px;
+    width: 100%;
+
+    .container {
+      width: 100%;
+      padding: 0px;
+      height: 320px;
+      .add-cart {
+        position: absolute;
+
+        display: none;
+        margin-top: 10px;
+        margin-left: 160px;
+        z-index: 99;
+        i {
+          font-size: 30px;
+          color: rgb(13, 226, 155);
+        }
+      }
+      .card-item:hover .add-cart {
+        display: block;
+      }
+      .card-item {
+        border: 0.5px solid rgb(97, 96, 96);
+        width: 18%;
+        height: 100%;
+        float: left;
+        margin-left: 18px;
+      }
+      .card-img-top {
+        height: 180px;
+      }
+      .card-item:hover {
+        cursor: pointer;
+        .card-img-top {
+          top: 5px;
+        }
+        .ten {
+          color: #f5a623;
+        }
+      }
+    }
+  }
+}

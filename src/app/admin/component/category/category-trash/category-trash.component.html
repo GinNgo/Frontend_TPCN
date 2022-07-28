@@ -1,0 +1,95 @@
+<form class="container-product" #DeleteForm="ngForm">
+  <div class="content-header">
+    <h1 class="float-left">
+      Thùng rác cho nhóm sản phẩm
+      <small class="back"
+        ><i class="fa fa-arrow-circle-left"></i
+        ><a
+          href
+          [routerLink]="['/admin/category/list']"
+          routerLinkActive="router-link-active"
+          >Quay lại danh sách nhóm sản phẩm</a
+        ></small
+      >
+    </h1>
+    <div class="">
+      <div class="btn btn-primary" (click)="toggleCategory()">
+        <i class="fa fa-refresh text-white"></i>Phục hồi (chọn)
+      </div>
+      <div class="btn btn-danger" (click)="deleteCategory()">
+        <i class="fa fa-trash text-white"></i> Xóa (chọn)
+      </div>
+    </div>
+  </div>
+  <div class="container-content">
+    <div class="card-search">
+      <i class="fa fa-search" aria-hidden="true"></i>
+      <app-combobox-category
+        [list]="catSearch"
+        (CatName)="addCategoryName($event)"
+        style="z-index: 999"
+      ></app-combobox-category>
+    </div>
+
+    <div class="card-table">
+      <div class="title"><p>Danh sách nhóm sản phẩm</p></div>
+      <table class="card-product col-md-12 table table-striped">
+        <thead>
+          <tr>
+            <th style="text-align: center">
+              <input
+                type="checkbox"
+                [(ngModel)]="isMasterSel"
+                name="delete"
+                value="h1"
+                (change)="checkUncheckAll()"
+              />
+            </th>
+
+            <th style="width: 700px">Tên nhóm sản phẩm</th>
+
+            <th style="text-align: center">Trạng thái</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="
+              let item of catList
+                | paginate
+                  : {
+                      itemsPerPage: 10,
+                      currentPage: page,
+                      totalItems: totalLength
+                    }
+            "
+            style="line-height: 100px"
+          >
+            <th style="text-align: center">
+              <input
+                type="checkbox"
+                [(ngModel)]="item.isSelected"
+                name="catId"
+                [value]="item.CatId"
+                (change)="isAllSelected()"
+              />
+            </th>
+
+            <td>{{ item.CatName }}</td>
+            <td style="text-align: center" *ngIf="item.Status == false">
+              <i class="fa fa-close text-danger"></i>
+            </td>
+            <td style="text-align: center" *ngIf="item.Status == true">
+              <i class="fa fa-check text-primary"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <pagination-controls
+        previousLabel=""
+        nextLabel=""
+        class="text-center my-pagination"
+        (pageChange)="page = $event"
+      ></pagination-controls>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,78 @@
+/* css cho dichvu  */
+.abovefooter {
+  float: bottom;
+}
+.dichvu p.detail {
+  font-size: 12px;
+  margin-bottom: 1px;
+  width: 198px;
+}
+
+.dichvu {
+  padding: 24px 0px 24px;
+}
+
+.dichvu h3.tieude {
+  font-size: 14px;
+  margin-bottom: 3px;
+}
+
+.dichvu .noidung {
+  width: 180px;
+}
+
+.dichvu img {
+  width: 57px;
+  height: 57px;
+  margin-right: 10px;
+}
+/* het css cho dichvu  */
+
+/* css cho footer  */
+.ptthanhtoan {
+  width: 200px;
+}
+
+footer .row a {
+  text-decoration: none;
+  display: block;
+  color: black;
+  transition: 0.3s;
+  padding-bottom: 5px;
+  font-size: 14px;
+}
+
+footer .row a:hover {
+  color: #f5a623;
+}
+
+footer .header {
+  font-size: 14px;
+  margin-bottom: 13px;
+}
+/* het css cho footer  */
+
+@media (max-width: 767px) {
+  .navbar form .input-group {
+    width: 100% !important;
+  }
+
+  .navbar ul li a.nav-link {
+    margin-left: 0.25rem !important;
+  }
+
+  .navbar ul li.account {
+    border-top: 1px dashed #cf111a;
+    border-bottom: 1px dashed #cf111a;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
+  }
+  .navbar ul li.giohang {
+    border-bottom: 1px dashed #cf111a;
+    padding-bottom: 0.5rem;
+    margin-right: 8px;
+  }
+  .categorycontent {
+    display: none;
+  }
+}

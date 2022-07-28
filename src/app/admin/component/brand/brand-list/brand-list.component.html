@@ -1,0 +1,108 @@
+<form class="container-product" #DeleteForm="ngForm">
+  <div class="content-header">
+    <h1 class="float-left">Thương hiệu</h1>
+    <div class="">
+      <div
+        class="btn btn-primary text-white"
+        [routerLink]="['/admin/brand/create']"
+        routerLinkActive="router-link-active"
+      >
+        <i class="fa fa-plus-square text-white"></i> Thêm mới
+      </div>
+      <div
+        class="btn btn-info"
+        [routerLink]="['/admin/brand/trash']"
+        routerLinkActive="router-link-active"
+      >
+        <i class="fa fa-trash text-white"></i> Thùng rác
+      </div>
+      <div class="btn btn-danger" type="submit" (click)="DeleteBrand()">
+        <i class="fa fa-trash text-white"></i> Xóa (chọn)
+      </div>
+      <div class="btn btn-warning" type="submit" (click)="TogglleStatus()">
+        <i class="fal fa-toggle-off text-white">Thay đổi trạng thái</i>
+      </div>
+    </div>
+  </div>
+  <div class="container-content">
+    <div class="card-search">
+      <i class="fa fa-search" aria-hidden="true"></i>
+      <app-combobox-brand
+        [list]="brandList"
+        (BrandName)="addBrandName($event)"
+        style="z-index: 999"
+      ></app-combobox-brand>
+    </div>
+
+    <div class="card-table">
+      <div class="title"><p>Danh sách Thương hiệu</p></div>
+      <table class="card-product col-md-12 table table-striped">
+        <thead>
+          <tr>
+            <th style="text-align: center">
+              <input
+                type="checkbox"
+                [(ngModel)]="isMasterSel"
+                name="delete"
+                value="h1"
+                (change)="checkUncheckAll()"
+              />
+            </th>
+
+            <th style="width: 700px">Tên thương hiệu</th>
+
+            <th style="text-align: center">Trạng thái</th>
+            <th style="text-align: center">Cập nhật</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="
+              let item of brandList
+                | paginate
+                  : {
+                      itemsPerPage: 10,
+                      currentPage: page,
+                      totalItems: totalLength
+                    }
+            "
+            style="line-height: 100px"
+          >
+            <th style="text-align: center">
+              <input
+                type="checkbox"
+                [(ngModel)]="item.isSelected"
+                name="brandId"
+                [value]="item.BrandId"
+                (change)="isAllSelected()"
+              />
+            </th>
+
+            <td>{{ item.BrandName }}</td>
+            <td style="text-align: center" *ngIf="item.Status == false">
+              <i class="fa fa-close text-danger"></i>
+            </td>
+            <td style="text-align: center" *ngIf="item.Status == true">
+              <i class="fa fa-check text-primary"></i>
+            </td>
+            <td style="text-align: center">
+              <div
+                class="btn btn-danger"
+                [routerLink]="['/admin/brand/edit/' + item.BrandId]"
+                routerLinkActive="router-link-active"
+              >
+                <i class="fa fa-pencil"> Cập nhật</i>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <pagination-controls
+        previousLabel=""
+        nextLabel=""
+        class="text-center my-pagination"
+        (pageChange)="page = $event"
+      ></pagination-controls>
+    </div>
+  </div>
+</form>

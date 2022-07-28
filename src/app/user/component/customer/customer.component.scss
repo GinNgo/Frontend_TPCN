@@ -1,0 +1,132 @@
+/* page tai khoan  */
+.account-page-tab-content .nav-tabs .nav-link {
+  border-radius: 0;
+}
+
+.account-page-tab-content a.nav-link {
+  margin-left: 0;
+}
+
+.account-page-tab-content .nav-tabs .nav-item.active {
+  color: black;
+  border-top: 4px solid #f5a623;
+}
+
+.account-page-tab-content .nav-tabs a {
+  color: gray;
+}
+
+.button-capnhat {
+  background: linear-gradient(#f8c168, #ffa142);
+  color: white;
+  font-weight: 500;
+  padding: 7px 15px 7px 15px;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.donhang-table table th {
+  font-weight: 500;
+  background: #cecece;
+}
+
+h3.account-header {
+  color: #9d9d9d;
+  font-size: 18px;
+}
+/* .duoinavbar  */
+.duoinavbar {
+  background-color: #cf111a;
+}
+
+.benphai.float-right {
+  line-height: 40px;
+  font-size: 14px;
+}
+
+.noidungheader {
+  padding-top: 8px;
+  .title-cat {
+    padding-left: 14px;
+  }
+}
+
+.categoryheader {
+  height: 40px;
+  background-color: #aa1318;
+}
+
+.duoinavbar .container .row {
+  height: 40px;
+}
+
+.duoinavbar {
+  height: 40px;
+}
+
+.hotline {
+  display: inline-block;
+  position: relative;
+  margin-right: 11px;
+}
+
+.hotline:after {
+  content: "|";
+  position: absolute;
+  color: white;
+  top: -1px;
+  right: -10px;
+  font-size: 22px;
+}
+
+.benphai a {
+  color: white;
+}
+/* het css .duoinavbar  */
+/*categories*/
+.categories {
+  margin-top: 8px;
+  display: none;
+}
+.noidungheader:hover {
+  cursor: pointer;
+  .categories {
+    z-index: 99;
+    display: block;
+  }
+}
+.error {
+  padding: 0px;
+  color: red;
+}
+.success {
+  padding: 0px;
+  color: green;
+}
+.unAcvtiveClass {
+  display: none;
+}
+.cancelOrder {
+  position: absolute;
+  text-align: center;
+  top: 30%;
+  z-index: 999;
+  background-color: #5a94e0;
+  background-size: cover;
+  left: 40%;
+  width: 20%;
+  float: right;
+  height: 30%;
+  border-radius: 5px;
+  overflow: (1, 1, 1, 0.6);
+}

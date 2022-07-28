@@ -1,0 +1,107 @@
+<form
+  class="container-product"
+  #DeleteForm="ngForm"
+  (ngSubmit)="DeleteProductForm(DeleteForm)"
+>
+  <div class="content-header">
+    <h1 class="float-left">
+      Thùng rác
+      <small class="back"
+        ><i class="fa fa-arrow-circle-left"></i
+        ><a
+          href
+          [routerLink]="['/admin/product/list']"
+          routerLinkActive="router-link-active"
+          >Quay lại danh sách sản phẩm</a
+        ></small
+      >
+    </h1>
+    <div class="">
+      <div class="btn btn-primary" (click)="toggleProduct()">
+        <i class="fa fa-refresh text-white"></i>Phục hồi (chọn)
+      </div>
+      <div class="btn btn-danger" (click)="deleteProduct()">
+        <i class="fa fa-trash text-white"></i> Xóa (chọn)
+      </div>
+    </div>
+  </div>
+  <div class="container-content">
+    <div class="card-search">
+      <i class="fa fa-search" aria-hidden="true"></i>
+      <app-combobox
+        [list]="productList"
+        (ProductName)="addProductName($event)"
+        style="z-index: 999"
+      ></app-combobox>
+    </div>
+
+    <div class="card-table">
+      <div class="title"><p>Danh sách sản phẩm</p></div>
+      <table class="card-product col-md-12 table table-striped">
+        <thead>
+          <tr>
+            <th style="text-align: center">
+              <input
+                type="checkbox"
+                [(ngModel)]="isMasterSel"
+                name="delete"
+                value="h1"
+                (change)="checkUncheckAll()"
+              />
+            </th>
+
+            <th>Hình ảnh</th>
+            <th style="width: 700px">Tên sản phẩm</th>
+            <th style="width: 200px">Giá</th>
+            <th style="width: 200px">Giá giảm</th>
+            <th style="text-align: center">Trạng thái</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="
+              let item of productList
+                | paginate
+                  : {
+                      itemsPerPage: 10,
+                      currentPage: page,
+                      totalItems: totalLength
+                    };
+              let i = index
+            "
+            style="line-height: 100px"
+          >
+            <th style="text-align: center">
+              <input
+                type="checkbox"
+                [(ngModel)]="item.isSelected"
+                name="productId + i"
+                value=" item.ProductId "
+                (change)="isAllSelected()"
+              />
+            </th>
+            <td>
+              <img
+                src="https://localhost:44376/Upload/images/{{ item.Image }}"
+                alt=""
+                style="width: 100px"
+              />
+            </td>
+            <td>{{ item.ProductName }}</td>
+            <td>{{ item.Price }}</td>
+            <td>{{ item.PriceDiscount }}</td>
+            <td style="text-align: center">
+              <i class="fa fa-close text-danger"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <pagination-controls
+        previousLabel=""
+        nextLabel=""
+        class="text-center my-pagination"
+        (pageChange)="page = $event"
+      ></pagination-controls>
+    </div>
+  </div>
+</form>

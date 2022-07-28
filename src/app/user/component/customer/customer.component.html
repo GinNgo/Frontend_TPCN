@@ -1,0 +1,400 @@
+<!-- form dang nhap khi click vao button tren header-->
+
+<section class="duoinavbar">
+  <div class="container text-white">
+    <div class="row justify">
+      <div class="col-lg-3 col-md-5">
+        <div class="categoryheader">
+          <div class="noidungheader text-white">
+            <div class="title-cat">
+              <i class="fa fa-bars"></i>
+              <span class="text-uppercase font-weight-bold ml-1"
+                >Danh mục sách</span
+              >
+            </div>
+            <div class="categories">
+              <app-categories></app-categories>
+            </div>
+          </div>
+          <!-- CATEGORIES -->
+        </div>
+      </div>
+      <div class="col-md-5 ml-auto contact d-none d-md-block">
+        <div class="benphai float-right">
+          <div class="hotline">
+            <i class="fa fa-phone"></i>
+            <span>Hotline:<b>1900 1999</b> </span>
+          </div>
+          <i class="fas fa-comments-dollar"></i>
+          <a
+            href=""
+            [routerLink]="['/lien-he']"
+            routerLinkActive="router-link-active"
+          >
+            Liên hệ
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- nội dung của trang  -->
+
+<section class="account-page my-3">
+  <div class="container">
+    <div class="page-content bg-white">
+      <div class="account-page-tab-content m-4">
+        <!-- 2 tab: thông tin tài khoản, danh sách đơn hàng  -->
+        <nav>
+          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <a
+              class="nav-item nav-link active"
+              id="nav-taikhoan-tab"
+              data-toggle="tab"
+              href="#nav-taikhoan"
+              role="tab"
+              aria-controls="nav-home"
+              aria-selected="true"
+              >Thông tin tài khoản</a
+            >
+            <a
+              class="nav-item nav-link"
+              id="nav-donhang-tab"
+              data-toggle="tab"
+              href="#nav-donhang"
+              role="tab"
+              aria-controls="nav-profile"
+              aria-selected="false"
+              >Danh sách đơn hàng</a
+            >
+            <a
+              class="nav-item nav-link"
+              id="nav-change-password-tab"
+              data-toggle="tab"
+              href="#nav-change-password"
+              role="tab"
+              aria-controls="nav-profile"
+              aria-selected="false"
+              >Đổi mật khẩu</a
+            >
+          </div>
+        </nav>
+
+        <!-- nội dung 2 tab -->
+        <div class="tab-content">
+          <!-- nội dung tab 1: thông tin tài khoản  -->
+          <div
+            class="tab-pane fade show active pl-4"
+            id="nav-taikhoan"
+            role="tabpanel"
+            aria-labelledby="nav-taikhoan-tab"
+          >
+            <div class="offset-md-4 mt-3">
+              <h3 class="account-header">Thông tin tài khoản</h3>
+            </div>
+            <form
+              id="form-signin"
+              class="form-signin mt-2"
+              #profileForm="ngForm"
+              (ngSubmit)="UpdateProfile(profileForm)"
+            >
+              <div class="hoten my-3">
+                <div class="row">
+                  <label class="col-md-2 offset-md-2" for="name">Họ tên</label>
+                  <input
+                    class="col-md-4"
+                    type="text"
+                    name="name"
+                    id="name"
+                    [(ngModel)]="user.Fullname"
+                  />
+                </div>
+              </div>
+              <div class="email my-3">
+                <div class="row">
+                  <label class="col-md-2 offset-md-2" for="email"
+                    >Địa chỉ email</label
+                  >
+                  <input
+                    class="col-md-4"
+                    type="email"
+                    name="email"
+                    [(ngModel)]="user.Email"
+                    id="email"
+                  />
+                </div>
+              </div>
+              <div class="email my-3">
+                <div class="row">
+                  <label class="col-md-2 offset-md-2" for="address"
+                    >Địa chỉ</label
+                  >
+                  <input
+                    class="col-md-4"
+                    type="text"
+                    name="address"
+                    [(ngModel)]="user.Address"
+                    id="address"
+                  />
+                </div>
+              </div>
+              <div class="email my-3">
+                <div class="row">
+                  <label class="col-md-2 offset-md-2" for="phone"
+                    >Số điện thoại</label
+                  >
+                  <input
+                    class="col-md-4"
+                    type="phone"
+                    name="phone"
+                    [(ngModel)]="user.Phone"
+                    id="phone"
+                  />
+                </div>
+              </div>
+              <div class="capnhat my-3">
+                <div class="row">
+                  <button
+                    type="submit"
+                    class="button-capnhat text-uppercase offset-md-4 btn btn-warning mb-4"
+                  >
+                    Cập nhật
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <!-- nội dung tab 2: danh sách đơn hàng -->
+
+          <div
+            class="tab-pane fade py-3"
+            id="nav-donhang"
+            role="tabpanel"
+            aria-labelledby="nav-donhang-tab"
+          >
+            <div [ngClass]="{ unAcvtiveClass: toggleClass == false }">
+              <h2 style="color: aqua" *ngIf="!listOrder">
+                Bạn chưa có đơn hàng nào cả!
+              </h2>
+              <div *ngIf="listOrder">
+                <div class="donhang-table">
+                  <table>
+                    <thead class="m-auto col-md-12">
+                      <tr>
+                        <th>Mã đơn hàng</th>
+                        <th>Ngày mua</th>
+
+                        <th>Tổng tiền</th>
+                        <th>Trạng thái đơn hàng</th>
+                        <th>Xem chi tiết</th>
+                        <th>Hủy đơn</th>
+                      </tr>
+                    </thead>
+
+                    <tbody class="m-auto">
+                      <tr *ngFor="let item of ListOrder">
+                        <td>{{ item.OrderId }}</td>
+                        <td>{{ item.OrderDate }}</td>
+                        <td>{{ item.Total | currency: "VND":"" }} ₫</td>
+                        <td
+                          style="font-weight: 500"
+                          [ngStyle]="{
+                            color: getColor(item.Period)
+                          }"
+                        >
+                          {{ item.Period }}
+                        </td>
+                        <td>
+                          <button
+                            class="btn btn-lg"
+                            (click)="toggleClass = false"
+                            (click)="GetOrderdetail(item.OrderId)"
+                            style="font-size: 16px"
+                          >
+                            <i class="fa fa-search"> </i>xem chi tiết
+                          </button>
+                        </td>
+                        <td>
+                          <button
+                            class="btn btn-lg"
+                            (click)="delete(item.OrderId)"
+                          >
+                            <i class="fa fa-trash text-danger"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div [ngClass]="{ unAcvtiveClass: toggleClass != false }">
+              <button
+                class="btn btn-lg btn-warning"
+                (click)="toggleClass = true"
+              >
+                Danh sách đơn hàng
+              </button>
+              <div class="donhang-table">
+                <table>
+                  <thead class="m-auto col-md-12">
+                    <tr>
+                      <th>STT</th>
+                      <th>Tên sản phẩm</th>
+
+                      <th>Giá tiền</th>
+                      <th>Số lượng</th>
+                    </tr>
+                  </thead>
+
+                  <tbody class="m-auto">
+                    <tr *ngFor="let item of ListOrderDetail; let i = index">
+                      <td>{{ i + 1 }}</td>
+                      <td>{{ name[i] }}</td>
+                      <td>{{ item.Price | currency: "VND":"" }} ₫</td>
+                      <td>{{ item.Quantity }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- nội dung tab 3: đổi mật khẩu -->
+          <div
+            class="tab-pane fade pl-4"
+            id="nav-change-password"
+            role="tabpanel"
+            aria-labelledby="nav-change-password-tab"
+          >
+            <div class="offset-md-4 mt-3">
+              <h3 class="account-header">Đổi mật khẩu</h3>
+            </div>
+            <form
+              id="form-signin"
+              class="form-signin mt-2"
+              #changePassForm="ngForm"
+              (ngSubmit)="ChangePassword(changePassForm)"
+            >
+              <div class="oldPass my-3">
+                <div class="row">
+                  <label class="col-md-2 offset-md-2" for="oldPass"
+                    >Nhập mật khẩu</label
+                  >
+                  <input
+                    class="col-md-4"
+                    type="password"
+                    name="oldPass"
+                    [type]="fieldTextType ? 'text' : 'password'"
+                    ngModel
+                    id="oldPass"
+                    (click)="refresh()"
+                    required
+                  />
+                  <div class="input-group-append float-right">
+                    <span class="input-group-text">
+                      <i
+                        class="fa"
+                        [ngClass]="{
+                          'fa-eye-slash': !fieldTextType,
+                          'fa-eye': fieldTextType
+                        }"
+                        (click)="toggleFieldTextType()"
+                      ></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="newPass my-3">
+                <div class="row">
+                  <label class="col-md-2 offset-md-2" for="newPass"
+                    >Nhập mật khẩu mới</label
+                  >
+                  <input
+                    class="col-md-4"
+                    type="password"
+                    name="newPass"
+                    [type]="fieldTextTypeNew ? 'text' : 'password'"
+                    ngModel
+                    id="newPass"
+                    (click)="refresh()"
+                    required
+                  />
+                  <div class="input-group-append float-right">
+                    <span class="input-group-text">
+                      <i
+                        class="fa"
+                        [ngClass]="{
+                          'fa-eye-slash': !fieldTextTypeNew,
+                          'fa-eye': fieldTextTypeNew
+                        }"
+                        (click)="toggleFieldTextTypeNew()"
+                      ></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="confirmPass my-3">
+                <div class="row">
+                  <label class="col-md-2 offset-md-2" for="confirmPass"
+                    >Xác nhận mật khẩu</label
+                  >
+                  <input
+                    class="col-md-4"
+                    type="password"
+                    [type]="fieldTextTypecheck ? 'text' : 'password'"
+                    name="confirmPass"
+                    ngModel
+                    id="confirmPass"
+                    (click)="refresh()"
+                    required
+                  />
+                  <div class="input-group-append float-right">
+                    <span class="input-group-text">
+                      <i
+                        class="fa"
+                        [ngClass]="{
+                          'fa-eye-slash': !fieldTextTypecheck,
+                          'fa-eye': fieldTextTypecheck
+                        }"
+                        (click)="toggleFieldTextTypecheck()"
+                      ></i>
+                    </span>
+                  </div>
+                </div>
+                <div class="offset-md-4 col-md-4 error" *ngIf="checkNull">
+                  Không được để trống
+                </div>
+                <div class="offset-md-4 col-md-4 error" *ngIf="checkOldNewPass">
+                  Mật khẩu phải khác mật khẩu cũ
+                </div>
+                <div class="offset-md-4 col-md-4 error" *ngIf="checkNewPass">
+                  Mật khẩu không trùng khớp.
+                </div>
+                <div class="offset-md-4 col-md-4 error" *ngIf="checkOldPass">
+                  Sai mật khẩu
+                </div>
+                <div class="offset-md-4 col-md-4 success" *ngIf="success">
+                  Đổi mật khẩu thành công.
+                </div>
+              </div>
+
+              <div class="capnhat my-3">
+                <div class="row">
+                  <button
+                    type="submit"
+                    class="button-capnhat text-uppercase offset-md-4 btn btn-warning mb-4"
+                  >
+                    Cập nhật
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

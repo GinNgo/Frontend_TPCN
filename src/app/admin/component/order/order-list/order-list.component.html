@@ -1,0 +1,215 @@
+<form
+  class="container-product"
+  #DeleteForm="ngForm"
+  style="position: relative; top: 0px"
+>
+  <div class="content-header">
+    <h1 class="float-left">Danh sách đơn hàng</h1>
+    <div
+      *ngIf="!toggleExport"
+      type="button"
+      class="btn btn-primary"
+      (click)="toggleExport = !toggleExport"
+    >
+      Chuyển sang chế độ xuất
+    </div>
+    <div
+      *ngIf="toggleExport"
+      type="button"
+      class="btn btn-primary"
+      (click)="toggleExport = !toggleExport"
+    >
+      Quay lại
+    </div>
+    <input
+      *ngIf="toggleExport"
+      type="button"
+      class="btn btn-danger"
+      value="Xuất đơn hàng"
+      (click)="convertToPDF()"
+    />
+  </div>
+  <div class="container-content" *ngIf="!toggleExport">
+    <!-- <div class="card-search">
+      <i class="fa fa-search" aria-hidden="true"></i>
+      <app-combobox></app-combobox>
+    </div> -->
+    <br />
+    <div class="card-search">
+      <i class="fa fa-search" aria-hidden="true"></i>
+      <app-combobox-order
+        [list]="orderList"
+        (OrderId)="addOrderName($event)"
+        style="z-index: 999"
+      ></app-combobox-order>
+    </div>
+    <div class="card-table" style="font-size: 14px">
+      <div class="title"><p>Danh sách dơn hàng</p></div>
+      <table class="card-product col-md-12 table table-striped">
+        <thead>
+          <tr>
+            <th style="text-align: center">
+              <input
+                type="checkbox"
+                [(ngModel)]="isMasterSel"
+                name="delete"
+                value="h1"
+                (change)="checkUncheckAll()"
+              />
+            </th>
+            <th>Mã đơn hàng</th>
+            <th>Người đặt</th>
+            <th>Địa chỉ</th>
+            <th>Ngày đặt hàng</th>
+            <th>Giá trị đơn</th>
+            <th style="text-align: center">Giai đoạn</th>
+
+            <th style="text-align: center">Chi tiết</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="
+              let item of orderList
+                | paginate
+                  : {
+                      itemsPerPage: 10,
+                      currentPage: page,
+                      totalItems: totalLength
+                    };
+              let j = index
+            "
+            style="line-height: 100px"
+          >
+            <th style="text-align: center">
+              <input
+                type="checkbox"
+                [(ngModel)]="item.isSelected"
+                name="orderId"
+                [value]="item.OrderId"
+                (change)="isAllSelected()"
+              />
+            </th>
+
+            <td style="width: 100px">{{ item.OrderId }}</td>
+            <td>{{ user[j]?.Fullname }}</td>
+            <td>{{ user[j]?.Address }}</td>
+            <td>{{ item.OrderDate }}</td>
+            <td>{{ item.Total | currency: "VND":"" }} ₫</td>
+            <td style="text-align: center">
+              <form (ngSubmit)="changePeriod(f, item)" #f="ngForm">
+                <select
+                  style="
+                    margin-top: 30px;
+                    width: 200px;
+                    height: 40px;
+                    font-size: 16px;
+                  "
+                  class=""
+                  placeholder="Giai đoạn"
+                  [ngModel]="item?.Period"
+                  name="period"
+                  autofocus
+                >
+                  <option
+                    *ngFor="let i of period"
+                    [ngValue]="i.value"
+                    [selected]="i.value === item?.Period"
+                  >
+                    {{ i.value }}
+                  </option>
+                </select>
+
+                <button class="btn btn-danger" type="submit">
+                  <i class="fa fa-pencil"> Cập nhật</i>
+                </button>
+              </form>
+            </td>
+
+            <td style="text-align: center; font-weight: 500">
+              <p
+                href
+                [routerLink]="['/admin/order/detail/' + item.OrderId]"
+                routerLinkActive="router-link-active"
+                class="detail"
+              >
+                <i class="fa fa-search"> </i>xem chi tiết
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <pagination-controls
+        previousLabel=""
+        nextLabel=""
+        class="text-center my-pagination"
+        (pageChange)="page = $event"
+      ></pagination-controls>
+    </div>
+  </div>
+  <br />
+  <h1 class="text-center" *ngIf="toggleExport">Bảng xuất đơn hàng</h1>
+  <table
+    *ngIf="toggleExport"
+    class="card-product col-md-12 table table-striped"
+    id="contentToConvert"
+  >
+    <thead>
+      <tr>
+        <th>Mã đơn hàng</th>
+        <th>Người đặt</th>
+        <th>Địa chỉ</th>
+        <th>Số điện thoại</th>
+        <th>Email</th>
+        <th>Ngày đặt hàng</th>
+        <th>Giá trị đơn</th>
+        <th style="text-align: center">Giai đoạn</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="
+          let item of List
+            | paginate
+              : {
+                  itemsPerPage: 10,
+                  currentPage: page,
+                  totalItems: totalLength
+                };
+          let j = index
+        "
+        style="line-height: 100px"
+      >
+        <td style="width: 120px" class="text-center">{{ item.OrderId }}</td>
+        <td>{{ item.Fullname }}</td>
+        <td>{{ item.Address }}</td>
+        <td>{{ item.Phone | slice: 0:5 }}****</td>
+        <td>{{ item.Email }}</td>
+        <td>{{ item.OrderDate | date: "short" }}</td>
+        <td>{{ item.Total | currency: "VND":"" }} ₫</td>
+        <td
+          class="text-center"
+          style="font-weight: 500"
+          [ngStyle]="{
+            color: getColor(item.Period)
+          }"
+        >
+          {{ item.Period }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</form>
+
+<div class="form-cancel" *ngIf="cancel">
+  <h2 class="content">Nhập lý do hủy</h2>
+  <textarea rows="6" [(ngModel)]="reason"></textarea>
+  <div class="container-submit">
+    <button (click)="cancel = !cancel" class="btn btn-danger">Hủy</button>
+    <button (click)="sendValues()" class="btn btn-primary" type="submit">
+      Xác nhận
+    </button>
+  </div>
+</div>
+<div class="backgroumd-cancel" *ngIf="cancel"></div>

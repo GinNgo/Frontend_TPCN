@@ -1,0 +1,83 @@
+<form
+  class="container-product-edit"
+  #EditCat="ngForm"
+  (ngSubmit)="EditCategoryForm(EditCat)"
+>
+  <div class="content-header">
+    <h1 class="float-left">
+      Chỉnh sửa chi tiết nhóm sản phẩm - {{ Category?.CatName }}
+      <small class="back"
+        ><i class="fa fa-arrow-circle-left"></i
+        ><a
+          href
+          [routerLink]="['/admin/category/list']"
+          routerLinkActive="router-link-active"
+          >Quay lại danh sách nhóm sản phẩm</a
+        ></small
+      >
+    </h1>
+
+    <div class="float-left">
+      <button class="btn btn-info text-white" type="submit">
+        <i class="fa fa-save text-white"></i> Lưu
+      </button>
+
+      <button class="btn btn-danger" (click)="DeleteCategory()">
+        <i class="fa fa-trash text-white"></i> Xóa
+      </button>
+    </div>
+  </div>
+  <br />
+  <div class="content">
+    <div class="container-fluid">
+      <div class="card-title">
+        <i class="fa fa-info"> Thông tin nhóm sản phẩm</i>
+      </div>
+      <div class="card-detail">
+        <div class="card-form col-md-14">
+          <div class="form-group row">
+            <div class="col-md-3 text-right">
+              <label class="col-form-label" for="Name">Tên nhóm sản phẩm</label>
+            </div>
+            <div class="col-md-9">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Tên sản phẩm"
+                name="name"
+                id="name"
+                [ngModel]="Category?.CatName"
+                required
+                autofocus
+              />
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-md-3 text-right">
+              <label class="col-form-label" for="status">Trạng thái</label>
+            </div>
+            <div class="col-md-9">
+              <select
+                class="form-control"
+                placeholder="Trạng thái nhóm sản phẩm"
+                name="status"
+                [ngModel]="Category?.Status"
+                id="status"
+                autofocus
+              >
+                <option
+                  *ngFor="let item of status"
+                  [ngValue]="item.id"
+                  [selected]="item.id === Category?.Status"
+                >
+                  {{ item.value }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

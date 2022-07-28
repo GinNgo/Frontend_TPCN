@@ -1,0 +1,414 @@
+<form
+  class="container-product-edit"
+  #EditProduct="ngForm"
+  (ngSubmit)="EditProductForm(EditProduct)"
+>
+  <div class="content-header">
+    <h1 class="float-left">
+      Chỉnh sửa chi tiết sản phẩm - {{ Product?.ProductName }}
+      <small class="back"
+        ><i class="fa fa-arrow-circle-left"></i
+        ><a
+          href
+          [routerLink]="['/admin/product/list']"
+          routerLinkActive="router-link-active"
+          >Quay lại danh sách sản phẩm</a
+        ></small
+      >
+    </h1>
+
+    <div class="float-left">
+      <button class="btn btn-info text-white" type="submit">
+        <i class="fa fa-save text-white"></i> Lưu
+      </button>
+
+      <button class="btn btn-danger" (click)="DeleteProduct()">
+        <i class="fa fa-trash text-white"></i> Xóa
+      </button>
+    </div>
+  </div>
+  <br />
+  <div class="content">
+    <div class="container-fluid">
+      <div class="card-title">
+        <i class="fa fa-info"> Thông tin sản phẩm</i>
+      </div>
+      <div class="card-detail">
+        <div class="card-form col-md-14">
+          <div class="form-group row">
+            <div class="col-md-3 text-right">
+              <label class="col-form-label" for="Name">Tên sản phẩm</label>
+            </div>
+            <div class="col-md-9">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Tên sản phẩm"
+                name="name"
+                id="name"
+                [ngModel]="Product?.ProductName"
+                required
+                autofocus
+              />
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-md-3 text-right">
+              <label class="col-form-label" for="description">Mô tả ngắn</label>
+            </div>
+            <div class="col-md-9">
+              <textarea
+                class="form-control"
+                placeholder="Mô tả ngắn sản phẩm"
+                name="description"
+                id="description"
+                [ngModel]="Product?.ShortDesc"
+                required
+                autofocus
+              ></textarea>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-3 text-right">
+              <label class="col-form-label" for="fullDescription"
+                >Mô tả đầy đủ</label
+              >
+            </div>
+            <div class="col-md-9">
+              <editor
+                name="fullDescription"
+                id="fullDescription"
+                apiKey="qdch72rq12p8lgwr7i6f4bm84r5pc3g08yjbp73hyrm8wsbl"
+                [init]="{
+                  placeholder: 'Mô tả đầy đủ',
+                  selector: 'textarea',
+                  menubar: true,
+                  plugins: 'link image code',
+                  toolbar:
+                    'undo redo | styleselect | forecolor | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | link image | code'
+                }"
+                [ngModel]="Product?.FullDesc"
+              ></editor>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-3 text-right">
+              <label class="col-form-label" for="price">Giá sản phẩm</label>
+            </div>
+            <div class="col-md-9">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Giá sản phẩm"
+                name="price"
+                id="price"
+                [ngModel]="Product?.Price"
+                required
+                autofocus
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-3 text-right">
+              <label class="col-form-label" for="priceDiscount"
+                >Giá khuyến mãi</label
+              >
+            </div>
+            <div class="col-md-9">
+              <input
+                type="text-area"
+                class="form-control"
+                placeholder="Giá khuyến mãi"
+                name="priceDiscount"
+                id="priceDiscount"
+                [ngModel]="Product?.PriceDiscount"
+                required
+                autofocus
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-3 text-right">
+              <label class="col-form-label" for="file">Hình ảnh</label>
+            </div>
+            <div class="col-md-9">
+              <img src="{{ url1 }}" height="100" />
+              <input
+                #file
+                type="file"
+                class="text-left hidden"
+                name="file"
+                id="file"
+                ngModel
+                required
+                autofocus
+                (change)="onSelectFile($event)"
+              />
+              <button
+                type="button"
+                class="btn btn-success"
+                (click)="file.click()"
+              >
+                Chọn hình
+              </button>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-md-3 text-right">
+              <label class="col-form-label" for="category">Nhóm sản phẩm</label>
+            </div>
+            <div class="col-md-9">
+              <ng-multiselect-dropdown
+                [settings]="dropdownSettings"
+                [data]="dropdownList"
+                [(ngModel)]="selectedItems"
+                [ngModelOptions]="{ standalone: true }"
+                (onSelect)="onItemSelect($event)"
+                (onSelectAll)="onSelectAll($event)"
+                name="category"
+                class="multiselect"
+                id="category"
+                ng-required="category"
+              >
+              </ng-multiselect-dropdown>
+            </div>
+          </div>
+          <!-- <div class="form-group row">
+            <div class="col-md-3 text-right">
+              <label class="col-form-label" for="category">Nhóm sản phẩm</label>
+            </div>
+            <div class="col-md-9">
+              <select
+                class="form-control"
+                placeholder="Tên sản phẩm"
+                name="category"
+                id="category"
+                [ngModel]="Product?.CategoryId"
+                required
+                autofocus
+              >
+                <option
+                  *ngFor="let item of catList"
+                  [ngValue]="item.CatId"
+                  [selected]="item.CatId == Product?.CategoryId"
+                >
+                  {{ item.CatName }}
+                </option>
+              </select>
+            </div>
+          </div> -->
+          <div class="form-group row">
+            <div class="col-md-3 text-right">
+              <label class="col-form-label" for="brand">Thương hiệu</label>
+            </div>
+            <div class="col-md-9">
+              <select
+                class="form-control"
+                placeholder="Tên sản phẩm"
+                name="brand"
+                id="brand"
+                [ngModel]="Product?.BrandId"
+                required
+                autofocus
+              >
+                <option
+                  *ngFor="let item of brandList"
+                  [ngValue]="item.BrandId"
+                  [selected]="item.BrandId == Product?.BrandId"
+                >
+                  {{ item.BrandName }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-3 text-right">
+              <label class="col-form-label" for="origin">Xuất xứ</label>
+            </div>
+            <div class="col-md-9">
+              <input
+                type="text-area"
+                class="form-control"
+                placeholder="Xuất xứ"
+                name="origin"
+                id="origin"
+                [ngModel]="Product?.Origin"
+                required
+                autofocus
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-3 text-right">
+              <label class="col-form-label" for="status">Trạng thái</label>
+            </div>
+            <div class="col-md-9">
+              <select
+                class="form-control"
+                placeholder="Tên sản phẩm"
+                name="status"
+                [ngModel]="Product?.Status"
+                id="status"
+                autofocus
+              >
+                <option
+                  *ngFor="let item of status"
+                  [ngValue]="item.id"
+                  [selected]="item.id === Product?.Status"
+                >
+                  {{ item.value }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="card-table">
+      <div class="title"><p>Danh sách hình ảnh</p></div>
+      <table class="card-product col-md-12 table table-striped">
+        <thead>
+          <tr>
+            <th style="width: 100px">Hình ảnh</th>
+            <th style="width: 100px">Thứ tự hiển thị</th>
+            <th>Title</th>
+
+            <th style="text-align: center">Cập nhật</th>
+            <th style="text-align: center">Xóa</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of ImageList" style="line-height: 100px">
+            <td>
+              <img
+                src="https://localhost:44376/Upload/images/{{ item.ImageName }}"
+                alt=""
+                style="width: 100px"
+              />
+            </td>
+
+            <td style="width: 60px">
+              <input
+                class="text-center"
+                type="number"
+                [value]="item.DisplayOrder"
+                #displayorder
+                style="height: 30px"
+                [ngClass]="{ 'border-hidden': !editImage }"
+                [disabled]="!editImage"
+              />
+            </td>
+            <td>
+              <input
+                type="text"
+                [value]="item.Title"
+                style="height: 30px; width: 400px"
+                #title
+                [ngClass]="{ 'border-hidden': !editImage }"
+                [disabled]="!editImage"
+              />
+            </td>
+            <td style="text-align: center">
+              <div
+                class="btn btn-info"
+                *ngIf="editImage === false"
+                (click)="editImage = true"
+              >
+                <i class="fa fa-pencil"> Chỉnh sửa</i>
+              </div>
+              <div
+                class="btn btn-info"
+                *ngIf="editImage === true"
+                (click)="
+                  item.Title = title.value;
+                  editImage = false;
+                  UpdateImage(item, displayorder.value)
+                "
+              >
+                <i class="fa fa-check"> Cập nhật</i>
+              </div>
+              <div
+                class="btn btn-info"
+                *ngIf="editImage === true"
+                (click)="editImage = false"
+              >
+                <i class="fa fa-close"> Hủy</i>
+              </div>
+            </td>
+            <td style="text-align: center">
+              <div class="btn btn-danger" (click)="DeleteImage(item.Id)">
+                <i class="fa fa-trash"> Xóa</i>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card-table">
+      <div class="title"><p>Thêm hình ảnh</p></div>
+      <form #formImage="ngForm" (ngSubmit)="CreateImageForm(formImage)">
+        <div class="form-group row">
+          <div class="col-md-3 text-right">
+            <label class="col-form-label" for="file">Hình ảnh</label>
+          </div>
+          <div class="col-md-9">
+            <img [src]="url" height="100" />
+            <input
+              #file
+              type="file"
+              class="text-left"
+              name="file"
+              id="file"
+              ngModel
+              required
+              autofocus
+              (change)="onSelectFile($event)"
+            />
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-md-3 text-right">
+            <label class="col-form-label" for="title">Title</label>
+          </div>
+          <div class="col-md-9">
+            <input
+              class="form-control"
+              name="title"
+              id="title"
+              ngModel
+              required
+              autofocus
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-3 text-right">
+            <label class="col-form-label" for="brand">Th tự hiển thị</label>
+          </div>
+          <div class="col-md-3">
+            <input
+              type="number"
+              class="form-control"
+              name="DisplayOrder"
+              id="DisplayOrder"
+              ngModel
+              required
+              autofocus
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-3 text-right"></div>
+          <div class="col-md-9">
+            <button type="submit" class="btn btn-primary">Thêm hình ảnh</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</form>

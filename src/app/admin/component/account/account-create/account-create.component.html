@@ -1,0 +1,205 @@
+<form
+  class="container-product-edit"
+  #CreateAccount="ngForm"
+  (ngSubmit)="CreateAccountForm(CreateAccount)"
+>
+  <div class="content-header">
+    <h1 class="float-left">
+      Thêm tài khoản mới
+      <small class="back"
+        ><i class="fa fa-arrow-circle-left"></i
+        ><a
+          href
+          [routerLink]="['/admin/account/list']"
+          routerLinkActive="router-link-active"
+          >Quay lại danh sách người dùng</a
+        ></small
+      >
+    </h1>
+
+    <div>
+      <button class="btn btn-info text-white" type="submit">
+        <i class="fa fa-save text-white"></i> Thêm mới
+      </button>
+    </div>
+  </div>
+  <div class="content">
+    <div class="container-fluid">
+      <div class="card-title">
+        <i class="fa fa-info"> Thông tin tài khoản</i>
+      </div>
+      <div class="card-detail">
+        <div class="card-form col-md-14">
+          <div class="form-group row">
+            <div class="col-md-3 text-right">
+              <label class="col-form-label" for="name">Họ và tên</label>
+            </div>
+            <div class="col-md-9">
+              <input
+                (click)="refresh()"
+                type="text"
+                class="form-control"
+                placeholder="Họ và tên"
+                name="name"
+                id="name"
+                ngModel
+                required
+                autofocus
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-3 text-right">
+              <label class="col-form-label" for="phone">Số điện thoại</label>
+            </div>
+            <div class="col-md-9">
+              <input
+                (click)="refresh()"
+                type="text"
+                class="form-control"
+                placeholder="Nhập số điện thoại"
+                (keypress)="numberOnly($event)"
+                name="phone"
+                id="phone"
+                ngModel
+                required
+                autofocus
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-3 text-right">
+              <label class="col-form-label" for="email">Email</label>
+            </div>
+            <div class="col-md-9">
+              <input
+                (click)="refresh()"
+                type="email"
+                class="form-control"
+                placeholder="Email"
+                name="email"
+                id="email"
+                ngModel
+                required
+                autofocus
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-3 text-right">
+              <label class="col-form-label" for="address">Địa chỉ</label>
+            </div>
+            <div class="col-md-9">
+              <input
+                (click)="refresh()"
+                type="text"
+                class="form-control"
+                placeholder="Nhập địa chỉ"
+                name="address"
+                id="address"
+                ngModel
+                required
+                autofocus
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-3 text-right">
+              <label class="col-form-label" for="username">Tài khoản</label>
+            </div>
+            <div class="col-md-9">
+              <input
+                (click)="refresh()"
+                type="text"
+                class="form-control"
+                placeholder="Nhập tài khoản"
+                name="username"
+                id="username"
+                ngModel
+                required
+                autofocus
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-3 text-right">
+              <label class="col-form-label" for="password">Mật khẩu</label>
+            </div>
+            <div class="col-md-9">
+              <input
+                (click)="refresh()"
+                type="password"
+                class="form-control"
+                placeholder="Nhập mật khẩu"
+                name="password"
+                id="password"
+                ngModel
+                required
+                autofocus
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-3 text-right">
+              <label class="col-form-label" for="confirmPassword"
+                >Nhập lại mật khẩu</label
+              >
+            </div>
+            <div class="col-md-9">
+              <input
+                (click)="refresh()"
+                type="password"
+                class="form-control"
+                placeholder="Xác nhận mật khẩu"
+                name="confirmPassword"
+                id="confirmPassword"
+                ngModel
+                required
+                autofocus
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-3 text-right">
+              <label class="col-form-label" for="role">Quyền</label>
+            </div>
+            <div class="col-md-9">
+              <select
+                class="form-control"
+                placeholder="Tên sản phẩm"
+                name="role"
+                id="role"
+                [(ngModel)]="role"
+                autofocus
+              >
+                <option value="1" [selected]="role === 1">Quản lý</option>
+                <option value="2">Khách hàng</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-3 text-right"></div>
+            <div class="col-md-9">
+              <div *ngIf="isAccount" class="text-danger">Tài khoản tồn tại</div>
+              <div *ngIf="confirm" class="text-danger">
+                Mật khẩu không trùng khớp
+              </div>
+              <div class="text-danger" *ngIf="checkNull">
+                Không được để trống
+              </div>
+              <div class="text-danger" *ngIf="success">
+                Tạo tài khoản thành công
+              </div>
+              <div class="text-danger" *ngIf="crefail">
+                tạo tài khoản thất bại
+              </div>
+              <div class="text-danger" *ngIf="checkEmail">
+                Email đã được sử dụng
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,54 @@
+<form
+  class="container-product-edit"
+  #CreateBrand="ngForm"
+  (ngSubmit)="CreateBrandForm(CreateBrand)"
+>
+  <div class="content-header">
+    <h1 class="float-left">
+      Thêm thương hiệu mới
+      <small class="back"
+        ><i class="fa fa-arrow-circle-left"></i
+        ><a
+          href
+          [routerLink]="['/admin/brand/list']"
+          routerLinkActive="router-link-active"
+          >Quay lại danh sách tương hiệu</a
+        ></small
+      >
+    </h1>
+
+    <div>
+      <button class="btn btn-info text-white" type="submit">
+        <i class="fa fa-save text-white"></i> Thêm mới
+      </button>
+    </div>
+  </div>
+  <div class="content">
+    <div class="container-fluid">
+      <div class="card-title">
+        <i class="fa fa-info"> Thông tin thương hiệu</i>
+      </div>
+      <div class="card-detail">
+        <div class="card-form col-md-14">
+          <div class="form-group row">
+            <div class="col-md-3 text-right">
+              <label class="col-form-label" for="name">Tên thương hiệu</label>
+            </div>
+            <div class="col-md-9">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Tên thương hiệu"
+                name="name"
+                id="name"
+                ngModel
+                required
+                autofocus
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,105 @@
+.container-product-edit {
+  margin: 0px;
+  padding: 0px;
+  height: 100vh;
+  width: 100%;
+}
+.content-header {
+  padding: 15px;
+  height: 70px;
+  width: 100%;
+}
+.float-left {
+  height: max-content;
+  font-size: 1.8rem;
+  margin: 0;
+  padding-left: 10px;
+  font-weight: 400;
+  line-height: 1.2;
+  float: left;
+  color: inherit;
+  .back {
+    i,
+    a {
+      margin-left: 5px;
+      color: rgb(48, 115, 216);
+      font-size: 0.8em;
+    }
+    a {
+      text-decoration: none;
+    }
+  }
+}
+
+.float-right {
+  margin-right: -170px;
+}
+.btn {
+  margin-left: 10px;
+}
+.content {
+  background: white;
+
+  display: flex;
+  flex-direction: column;
+  margin: 0 30px;
+  margin-top: 20px;
+  min-width: none;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 15px;
+  .card-title {
+    font-size: 1.2em;
+    border-bottom: 0.5px solid rgb(224, 221, 221);
+  }
+  label {
+    font-weight: 500;
+  }
+}
+.card-table {
+  display: flex;
+  flex-direction: column;
+  margin: 0 30px;
+  margin-top: 20px;
+  min-width: none;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 15px;
+  table tr,
+  td,
+  th {
+    border: 0.5px solid rgb(197, 195, 195);
+  }
+  table thead tr {
+    height: 30px;
+  }
+}
+.center .btn {
+  font-size: 14px !important;
+  margin-top: 20px !important;
+  font-weight: 400;
+  padding: 12px 72px;
+  border-radius: 3px !important;
+}
+//title-list
+.title {
+  margin-bottom: 5px;
+  p {
+    font-size: 20px;
+  }
+}
+
+.border-hidden {
+  background: none;
+  border: none;
+}
+#file::-webkit-file-upload-button {
+  visibility: hidden;
+  user-select: none;
+}

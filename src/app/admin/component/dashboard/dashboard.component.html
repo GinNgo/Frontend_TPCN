@@ -1,0 +1,129 @@
+<div
+  fxLayout="row"
+  fxLayoutAlign="space-between center"
+  fxLayoutGap="20px"
+  class="stats-cards"
+  style="margin: 0px 100px"
+>
+  <mat-card fxFlex="25">
+    <app-widget-card
+      label="Tổng số người dùng"
+      [total]="numberUse"
+      percentage="50"
+      unit="Người"
+    ></app-widget-card>
+  </mat-card>
+  <mat-card fxFlex="25">
+    <app-widget-card
+      label="Tổng số đơn hàng"
+      [total]="numberOrder"
+      percentage="40"
+      unit="Đơn"
+    ></app-widget-card>
+  </mat-card>
+  <mat-card fxFlex="25">
+    <app-widget-card
+      label="Tổng số sản phẩm đã bán"
+      [total]="numberPro"
+      percentage="30"
+      unit="Sản phẩm"
+    ></app-widget-card>
+  </mat-card>
+
+  <mat-card fxFlex="25">
+    <app-widget-card
+      label="Tổng Doanh thu"
+      [total]="numberPrice"
+      percentage="20"
+      unit="Đồng"
+    ></app-widget-card>
+  </mat-card>
+</div>
+<br />
+<div
+  fxLayout="row"
+  fxLayoutAlign="space-between center"
+  fxLayoutGap="20px"
+  class="stats-cards"
+  style="margin: 0px 100px"
+>
+  <mat-card fxFlex="25">
+    <app-widget-card
+      label="Đơn hàng trong ngày"
+      [total]="dayOrder.value"
+      percentage="50"
+      unit="Đơn"
+    ></app-widget-card>
+  </mat-card>
+  <mat-card fxFlex="30">
+    <app-widget-card
+      label="Tổng sản phẩm bán trong ngày"
+      [total]="numberProToDay"
+      percentage="30"
+      unit="Sản phẩm"
+    ></app-widget-card>
+  </mat-card>
+  <mat-card fxFlex="25">
+    <app-widget-card
+      label="Thu nhập trong ngày"
+      [total]="dayOrder.totalPrice"
+      percentage="50"
+      unit="Đồng"
+    ></app-widget-card>
+  </mat-card>
+</div>
+<br />
+<mat-divider></mat-divider>
+<br />
+
+<div style="width: 100%">
+  <app-widget-area></app-widget-area
+  ><app-widget-area-price></app-widget-area-price>
+</div>
+
+<br />
+<mat-divider></mat-divider>
+<br />
+
+<div>
+  <h4>Thống kê số lượng sản phẩm bán được</h4>
+  <div class="mat-elevation-z8" style="margin: 0 40px">
+    <table mat-table [dataSource]="dataSource">
+      <!-- Position Column -->
+      <ng-container matColumnDef="Postition">
+        <th mat-header-cell *matHeaderCellDef>Xếp hạng</th>
+        <td mat-cell *matCellDef="let element">{{ element.Postition }}</td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="ProductName">
+        <th mat-header-cell *matHeaderCellDef>Tên</th>
+        <td mat-cell *matCellDef="let element">{{ element.ProductName }}</td>
+      </ng-container>
+      <ng-container matColumnDef="Brand">
+        <th mat-header-cell *matHeaderCellDef>Thương hiệu</th>
+        <td mat-cell *matCellDef="let element">{{ element.Brand }}</td>
+      </ng-container>
+      <!-- Weight Column -->
+      <ng-container matColumnDef="Origin">
+        <th mat-header-cell *matHeaderCellDef>Xuất xứ</th>
+        <td mat-cell *matCellDef="let element">{{ element.Origin }}</td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="Quantity">
+        <th mat-header-cell *matHeaderCellDef>Số lượng bán</th>
+        <td mat-cell *matCellDef="let element">{{ element.Quantity }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+  </div>
+  <br />
+  <br />
+  <br />
+  <br />
+</div>

@@ -1,0 +1,5 @@
+<app-header style="position: fixed; width: 100%; z-index: 11"></app-header>
+<div class="body" [ngClass]="getBodyClass()">
+  <router-outlet></router-outlet>
+  <app-footer></app-footer>
+</div>

@@ -1,0 +1,254 @@
+<!-- thanh "danh muc sach" đã được ẩn bên trong + hotline + ho tro truc tuyen -->
+<section class="duoinavbar">
+  <div class="container text-white">
+    <div class="row justify">
+      <div class="col-lg-3 col-md-5">
+        <div class="categoryheader">
+          <div class="noidungheader text-white">
+            <div class="title-cat">
+              <i class="fa fa-bars"></i>
+
+              <span class="text-uppercase font-weight-bold ml-1"
+                >Danh mục sách</span
+              >
+            </div>
+            <div class="categories">
+              <app-categories></app-categories>
+            </div>
+          </div>
+          <!-- CATEGORIES -->
+        </div>
+      </div>
+      <div class="col-md-5 ml-auto contact d-none d-md-block">
+        <div class="benphai float-right">
+          <div class="hotline">
+            <i class="fa fa-phone"></i>
+            <span>Hotline:<b>1900 1999</b> </span>
+          </div>
+          <i class="fas fa-comments-dollar"></i>
+          <a
+            href=""
+            [routerLink]="['/contact']"
+            routerLinkActive="router-link-active"
+          >
+            Liên hệ
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- giao diện giỏ hàng  -->
+
+<section class="content my-3">
+  <div class="container">
+    <div class="cart-page bg-white" style="min-height: 500px">
+      <div class="row">
+        <!-- giao diện giỏ hàng khi không có item  -->
+        <ng-container *ngIf="products.length == 0">
+          <div class="col-12 cart-empty">
+            <div class="py-3 pl-3">
+              <h6 class="header-gio-hang">
+                GIỎ HÀNG CỦA BẠN <span>(0 sản phẩm)</span>
+              </h6>
+              <div
+                class="cart-empty-content w-100 text-center justify-content-center"
+              >
+                <img
+                  src="assets/images/shopping-cart-not-product.png"
+                  alt="shopping-cart-not-product"
+                />
+                <p>Chưa có sản phẩm nào trong giở hàng của bạn</p>
+                <a href="index.html" class="btn nutmuathem mb-3">Mua thêm</a>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        <!-- giao diện giỏ hàng khi có hàng (phần comment màu xanh bên dưới là phần 2 sản phẩm trong giỏ hàng nhưng giờ đã demo bằng jquery) -->
+        <ng-container *ngIf="products.length != 0">
+          <div class="col-md-12 cart">
+            <div class="cart-content py-3 pl-3">
+              <h6 class="header-gio-hang">
+                GIỎ HÀNG CỦA BẠN <span>({{ products.length }} sản phẩm)</span>
+              </h6>
+              <div class="container">
+                <div class="card-table">
+                  <table
+                    class="card-product col-md-12"
+                    style="border-bottom: 1px solid rgb(209, 207, 207)"
+                  >
+                    <thead style="text-align: center">
+                      <tr>
+                        <th>STT</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Hình ảnh</th>
+                        <th>Giá</th>
+                        <th>Số lượng</th>
+                        <th>Tổng cộng</th>
+                      </tr>
+                    </thead>
+                    <tbody style="text-align: center">
+                      <tr *ngFor="let item of products; let i = index">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ item.ProductName }}</td>
+                        <td>
+                          <img
+                            style="width: 100px"
+                            src="https://localhost:44376/Upload/images/{{
+                              item.Image
+                            }}"
+                            alt=""
+                          />
+                        </td>
+                        <td>
+                          <div class="giamoi">
+                            {{ item.PriceDiscount | currency: "VND":"" }} ₫
+                          </div>
+                          <div class="giacu">
+                            {{ item.Price | currency: "VND":"" }} ₫
+                          </div>
+                        </td>
+                        <td>
+                          <div class="text-center" [ngModel]="item.quantity">
+                            {{ item.quantity }}
+                          </div>
+                        </td>
+                        <td>
+                          {{ item.total * item.quantity | currency: "VND":"" }}
+                          ₫
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div *ngIf="validLogin" class="col-md-12">
+                <h6 class="header-gio-hang pt-4">THÔNG TIN VẬN CHUYỂN</h6>
+                <div class="email">
+                  <div class="row">
+                    <label class="col-md-2" for="address">Địa chỉ</label>
+                    <input
+                      class="col-md-6"
+                      type="text"
+                      name="address"
+                      [(ngModel)]="user.Address"
+                      id="address"
+                    />
+                  </div>
+                </div>
+                <div class="hoten mt-2">
+                  <div class="row">
+                    <label class="col-md-2" for="name">Họ tên</label>
+                    <input
+                      class="col-md-6"
+                      type="text"
+                      name="name"
+                      id="name"
+                      [(ngModel)]="user.Fullname"
+                    />
+                  </div>
+                </div>
+                <div class="email mt-2">
+                  <div class="row">
+                    <label class="col-md-2" for="phone">Số điện thoại</label>
+                    <input
+                      class="col-md-6"
+                      type="phone"
+                      name="phone"
+                      [(ngModel)]="user.Phone"
+                      id="phone"
+                    />
+                  </div>
+                </div>
+                <div class="email mt-2">
+                  <div class="row">
+                    <label class="col-md-2" for="email">E-mail</label>
+                    <input
+                      class="col-md-6"
+                      type="email"
+                      name="email"
+                      [(ngModel)]="user.Email"
+                      id="email"
+                    />
+                  </div>
+                </div>
+                <div class="email mt-2">
+                  <div class="row">
+                    <label class="col-md-2" for="note">Ghi chú</label>
+                    <textarea
+                      class="col-md-6"
+                      name="note"
+                      [(ngModel)]="note"
+                      id="note"
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="row" style="margin-top: 10px">
+                <div class="col-md-3"></div>
+                <div class="col-md-5 offset-md-4">
+                  <div class="tonggiatien">
+                    <div
+                      class="group d-flex justify-content-between align-items-center"
+                    >
+                      <strong class="text-uppercase" style="margin-left: 150px"
+                        >Tổng cộng:</strong
+                      >
+                      <p class="tongcong">
+                        {{ grandTotal | currency: "VND":"" }} ₫
+                      </p>
+                    </div>
+
+                    <div style="margin-top: 10px">
+                      <button
+                        (click)="checkout(grandTotal)"
+                        class="btn-checkout btn-lg btn"
+                        style="
+                          background: #f5a623;
+
+                          float: right;
+                        "
+                      >
+                        Thanh toán
+                      </button>
+                      <button
+                        [routerLink]="['/']"
+                        routerLinkActive="router-link-active"
+                        class="btn nutmuathem mb-3 btn-lg col-md-3 btn-checkout"
+                        style="
+                          float: right;
+                          margin-right: 10px;
+                          margin-top: 0px;
+                        "
+                      >
+                        Mua thêm
+                      </button>
+                      <button
+                        [routerLink]="['/gio-hang']"
+                        routerLinkActive="router-link-active"
+                        class="btn mb-3 btn-primary col-md-3 btn-checkout"
+                        style="
+                          float: right;
+                          margin-right: 10px;
+                          margin-top: 0px;
+                        "
+                      >
+                        Quay lại
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        <!-- het div cart-steps  -->
+      </div>
+      <!-- het row  -->
+    </div>
+    <!-- het cart-page  -->
+  </div>
+  <!-- het container  -->
+</section>
+<!-- het khoi content  -->

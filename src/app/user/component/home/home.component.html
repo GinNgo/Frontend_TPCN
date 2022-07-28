@@ -1,0 +1,346 @@
+<!-- thanh tieu de "danh muc sach" + hotline + ho tro truc tuyen -->
+<section class="duoinavbar">
+  <div class="container text-white">
+    <div class="row justify">
+      <div class="col-md-3">
+        <div class="categoryheader">
+          <div class="noidungheader text-white">
+            <i class="fa fa-bars"></i>
+            <span class="text-uppercase danhmuc font-weight-bold ml-1"
+              >Danh mục sản phẩm</span
+            >
+            <div class="categories">
+              <app-categories></app-categories>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="benphai float-right">
+          <div class="hotline">
+            <i class="fa fa-phone"></i>
+            <span>Hotline:<b>1900 1999</b> </span>
+          </div>
+          <i class="fas fa-comments-dollar"></i>
+          <a
+            href=""
+            [routerLink]="['/lien-he']"
+            routerLinkActive="router-link-active"
+          >
+            Liên hệ
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- noi dung danh muc sach(categories) + banner slider -->
+<section class="header bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 category" style="margin-right: -15px">
+        <!-- CATEGORIES -->
+      </div>
+      <!-- banner slider  -->
+      <div class="col-md-9 px-0">
+        <div id="carouselId" class="carousel slide" data-ride="carousel">
+          <ol class="nutcarousel carousel-indicators rounded-circle">
+            <li data-target="#carouselId" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselId" data-slide-to="1"></li>
+            <li data-target="#carouselId" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <a href="#"
+                ><img
+                  src="https://localhost:44376/Upload/images/{{
+                    slideList[0]?.ImageName
+                  }}"
+                  class="img-fluid"
+                  style="height: 386px"
+                  width="1140px"
+                  alt="First slide"
+              /></a>
+            </div>
+            <div class="carousel-item">
+              <a href="#"
+                ><img
+                  src="https://localhost:44376/Upload/images/{{
+                    slideList[1]?.ImageName
+                  }}"
+                  class="img-fluid"
+                  style="height: 386px"
+                  width="1140px"
+                  alt="Second slide"
+              /></a>
+            </div>
+            <div class="carousel-item">
+              <a href="#"
+                ><img
+                  src="https://localhost:44376/Upload/images/{{
+                    slideList[2]?.ImageName
+                  }}"
+                  class="img-fluid"
+                  style="height: 386px"
+                  width="1140px"
+                  alt="Third slide"
+              /></a>
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselId" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselId" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- khoi sach moi  -->
+<section class="_1khoi sachmoi bg-white">
+  <div class="container">
+    <div class="noidung bg-white" style="width: 100%">
+      <div class="row">
+        <!--header -->
+        <div
+          class="col-12 d-flex justify-content-between align-items-center pb-2 bg-white"
+        >
+          <h2 class="header text-uppercase" style="font-weight: 400">
+            SẢN PHẨM GIẢM GIÁ HOT
+          </h2>
+          <a
+            class="btn btn-warning btn-sm text-white"
+            [routerLink]="['/san-pham-giam-gia/' + Percent]"
+            routerLinkActive="router-link-active"
+            >Xem tất cả</a
+          >
+        </div>
+      </div>
+      <div class="product-container">
+        <div class="picsum-img-wrapper">
+          <div class="container">
+            <div class="card-item" *ngFor="let item of productListByPercent">
+              <span class="add-cart" (click)="addToCart(item)">
+                <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+              </span>
+              <div
+                [routerLink]="[
+                  '/chi-tiet/' +
+                    ChangeProductName(item.ProductName) +
+                    '/' +
+                    item.ProductId
+                ]"
+                routerLinkActive="router-link-active"
+                class="motsanpham"
+                style="text-decoration: none; color: black"
+                data-toggle="tooltip"
+                data-placement="bottom"
+              >
+                <img
+                  class="card-img-top anh"
+                  src="https://localhost:44376/Upload/images/{{ item.Image }} "
+                  alt="{{ item.Image }}"
+                />
+                <div class="card-body noidungsp mt-3">
+                  <h3 class="card-title ten">
+                    {{ item.ProductName }}
+                  </h3>
+                  <small class="tacgia text-muted">{{ item.Origin }}</small>
+                  <div class="gia d-flex align-items-baseline">
+                    <div class="giamoi">
+                      {{ item.PriceDiscount | currency: "VND":"" }} ₫
+                    </div>
+                    <div class="giacu text-muted">
+                      <del>{{ item.Price | currency: "VND":"" }} ₫</del>
+                    </div>
+                    <div class="sale">
+                      {{
+                        ((item.PriceDiscount - item.Price) / item.Price) * 100
+                          | currency: "VND":""
+                      }}%
+                    </div>
+                  </div>
+                  <!-- <div class="danhgia">
+                    <ul class="d-flex" style="list-style: none">
+                      <li class="active"><i class="fa fa-star"></i></li>
+                      <li class="active"><i class="fa fa-star"></i></li>
+                      <li class="active"><i class="fa fa-star"></i></li>
+                      <li class="active"><i class="fa fa-star"></i></li>
+                      <li><i class="fa fa-star"></i></li>
+                      <li><span class="text-muted">0 nhận xét</span></li>
+                    </ul>
+                  </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- khoi sach combo hot  -->
+<section class="_1khoi combohot bg-light">
+  <div class="container">
+    <div class="noidung bg-white" style="width: 100%">
+      <div class="row">
+        <!--header -->
+        <div
+          class="col-12 d-flex justify-content-between align-items-center pb-2 bg-light"
+        >
+          <h2 class="header text-uppercase" style="font-weight: 400">
+            SẢN PHẨM MỚI
+          </h2>
+          <!-- <a class="btn btn-warning btn-sm text-white">Xem tất cả</a> -->
+        </div>
+      </div>
+      <div class="product-container">
+        <div class="picsum-img-wrapper">
+          <div class="container">
+            <div class="card-item" *ngFor="let item of productFiveItem">
+              <span class="add-cart" (click)="addToCart(item)">
+                <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+              </span>
+              <div
+                [routerLink]="[
+                  '/chi-tiet/' +
+                    ChangeProductName(item.ProductName) +
+                    '/' +
+                    item.ProductId
+                ]"
+                routerLinkActive="router-link-active"
+                class="motsanpham"
+                style="text-decoration: none; color: black"
+                data-toggle="tooltip"
+                data-placement="bottom"
+              >
+                <img
+                  class="card-img-top anh"
+                  src="https://localhost:44376/Upload/images/{{ item.Image }} "
+                  alt="{{ item.Image }}"
+                />
+                <div class="card-body noidungsp mt-3">
+                  <h3 class="card-title ten">
+                    {{ item.ProductName }}
+                  </h3>
+                  <small class="tacgia text-muted">{{ item.Origin }}</small>
+                  <div class="gia d-flex align-items-baseline">
+                    <div class="giamoi">
+                      {{ item.PriceDiscount | currency: "VND":"" }} ₫
+                    </div>
+                    <div class="giacu text-muted">
+                      <del>{{ item.Price | currency: "VND":"" }} ₫</del>
+                    </div>
+                    <div class="sale">
+                      {{
+                        ((item.PriceDiscount - item.Price) / item.Price) * 100
+                          | currency: "VND":""
+                      }}%
+                    </div>
+                  </div>
+                  <!-- <div class="danhgia">
+                    <ul class="d-flex" style="list-style: none">
+                      <li class="active"><i class="fa fa-star"></i></li>
+                      <li class="active"><i class="fa fa-star"></i></li>
+                      <li class="active"><i class="fa fa-star"></i></li>
+                      <li class="active"><i class="fa fa-star"></i></li>
+                      <li><i class="fa fa-star"></i></li>
+                      <li><span class="text-muted">0 nhận xét</span></li>
+                    </ul>
+                  </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- khoi sach sap phathanh  -->
+<section class="_1khoi sapphathanh bg-white">
+  <div class="container">
+    <div class="noidung bg-white" style="width: 100%">
+      <div class="row">
+        <!--header -->
+        <div
+          class="col-12 d-flex justify-content-between align-items-center pb-2 bg-white"
+        >
+          <h2 class="header text-uppercase" style="font-weight: 400">
+            GỢI Ý CHO BẠN
+          </h2>
+          <!-- <a href="#" class="btn btn-warning btn-sm text-white">Xem tất cả</a> -->
+        </div>
+      </div>
+      <div class="product-container">
+        <div class="picsum-img-wrapper">
+          <div class="container">
+            <div class="card-item" *ngFor="let item of productRandom">
+              <span class="add-cart" (click)="addToCart(item)">
+                <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+              </span>
+              <div
+                [routerLink]="[
+                  '/chi-tiet/' +
+                    ChangeProductName(item.ProductName) +
+                    '/' +
+                    item.ProductId
+                ]"
+                routerLinkActive="router-link-active"
+                class="motsanpham"
+                style="text-decoration: none; color: black"
+                data-toggle="tooltip"
+                data-placement="bottom"
+              >
+                <img
+                  class="card-img-top anh"
+                  src="https://localhost:44376/Upload/images/{{ item.Image }} "
+                  alt="{{ item.Image }}"
+                />
+                <div class="card-body noidungsp mt-3">
+                  <h3 class="card-title ten">
+                    {{ item.ProductName }}
+                  </h3>
+                  <small class="tacgia text-muted">{{ item.Origin }}</small>
+                  <div class="gia d-flex align-items-baseline">
+                    <div class="giamoi">
+                      {{ item.PriceDiscount | currency: "VND":"" }} ₫
+                    </div>
+                    <div class="giacu text-muted">
+                      <del>{{ item.Price | currency: "VND":"" }} ₫</del>
+                    </div>
+                    <div class="sale">
+                      {{
+                        ((item.PriceDiscount - item.Price) / item.Price) * 100
+                          | currency: "VND":""
+                      }}%
+                    </div>
+                  </div>
+                  <!-- <div class="danhgia">
+                    <ul class="d-flex" style="list-style: none">
+                      <li class="active"><i class="fa fa-star"></i></li>
+                      <li class="active"><i class="fa fa-star"></i></li>
+                      <li class="active"><i class="fa fa-star"></i></li>
+                      <li class="active"><i class="fa fa-star"></i></li>
+                      <li><i class="fa fa-star"></i></li>
+                      <li><span class="text-muted">0 nhận xét</span></li>
+                    </ul>
+                  </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- div _1khoi -- khoi sachnendoc -->

@@ -1,0 +1,32 @@
+<div class="combobox">
+  <input
+    type="text"
+    [(ngModel)]="inputItem"
+    (ngModelChange)="getFilteredList(); addBrandName(inputItem)"
+    class="combobox-input form-control"
+    (keyup)="onKeyPress($event)"
+    (focus)="toggleListDisplay(1)"
+    placeholder="Tìm kiếm..."
+  />
+  <button
+    type="button"
+    class="btn"
+    style="background-color: #cf111a; color: white"
+    (click)="addBrandName(inputItem)"
+  >
+    <i class="fa fa-search"></i>
+  </button>
+  <!-- [ngClass]="{ error: showError }" -->
+  <!-- <span *ngIf="showError" class="error-text"
+          ><br /><i>Invalid Selection.</i></span
+        > -->
+  <div class="combobox-options" *ngIf="!listHidden">
+    <list-item
+      *ngFor="let item of filteredList; let i = index"
+      (click)="selectItem(i)"
+      (click)="addBrandName(inputItem)"
+      [ngClass]="{ selected: i === selectedIndex }"
+      >{{ item }}</list-item
+    >
+  </div>
+</div>

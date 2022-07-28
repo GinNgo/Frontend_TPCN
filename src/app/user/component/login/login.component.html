@@ -1,0 +1,132 @@
+<!-- form dang nhap khi click vao button tren header-->
+<section class="duoinavbar">
+  <div class="container text-white">
+    <div class="row justify">
+      <div class="col-lg-3 col-md-5">
+        <div class="categoryheader">
+          <div class="noidungheader text-white">
+            <div class="title-cat">
+              <i class="fa fa-bars"></i>
+              <span class="text-uppercase font-weight-bold ml-1"
+                >Danh mục sách</span
+              >
+            </div>
+            <div class="categories">
+              <app-categories></app-categories>
+            </div>
+          </div>
+          <!-- CATEGORIES -->
+        </div>
+      </div>
+      <div class="col-md-5 ml-auto contact d-none d-md-block">
+        <div class="benphai float-right">
+          <div class="hotline">
+            <i class="fa fa-phone"></i>
+            <span>Hotline:<b>1900 1999</b> </span>
+          </div>
+          <i class="fas fa-comments-dollar"></i>
+          <a
+            href=""
+            [routerLink]="['/lien-he']"
+            routerLinkActive="router-link-active"
+          >
+            Liên hệ
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <ul class="tabs d-flex justify-content-around list-unstyled mb-0">
+        <li class="tab tab-dangnhap text-center">
+          <a class="text-decoration-none">Đăng nhập</a>
+          <hr />
+        </li>
+      </ul>
+    </div>
+    <div class="modal-body">
+      <form
+        id="form-signin"
+        class="form-signin mt-2"
+        #loginForm="ngForm"
+        (ngSubmit)="login(loginForm)"
+      >
+        <div class="form-label-group">
+          <input
+            type="email"
+            class="form-control"
+            placeholder="Nhập tên tài khoản"
+            ngModel
+            name="username"
+            id="username"
+            required
+            autofocus
+            (click)="reset()"
+          />
+        </div>
+
+        <div class="form-label-group">
+          <input
+            type="password"
+            class="form-control"
+            placeholder="Mật khẩu"
+            [type]="fieldTextType ? 'text' : 'password'"
+            ngModel
+            name="password"
+            required
+            (click)="reset()"
+          />
+          <div
+            class="input-group-append float-right"
+            style="margin-top: -38px; height: 38px"
+          >
+            <span class="input-group-text">
+              <i
+                class="fa"
+                [ngClass]="{
+                  'fa-eye-slash': !fieldTextType,
+                  'fa-eye': fieldTextType
+                }"
+                (click)="toggleFieldTextType()"
+              ></i>
+            </span>
+          </div>
+        </div>
+        <div *ngIf="invalidLogin" class="text-danger">
+          Sai tài khoản hoặc mật khẩu
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input
+            type="checkbox"
+            class="custom-control-input"
+            id="customCheck1"
+            name="remember"
+            ngModel
+          />
+        </div>
+
+        <button
+          class="btn btn-lg btn-block btn-signin text-uppercase text-white"
+          type="submit"
+          style="background: #f5a623"
+        >
+          Đăng nhập
+        </button>
+        <hr class="my-4" />
+      </form>
+      <div
+        class="go-register"
+        [routerLink]="['/dang-ky']"
+        routerLinkActive="router-link-active"
+      >
+        <h6 class="text-primary text-center">
+          Đăng ký ngay nếu bạn chưa có tài khoản?
+        </h6>
+      </div>
+    </div>
+  </div>
+</div>

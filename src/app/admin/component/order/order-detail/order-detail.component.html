@@ -1,0 +1,132 @@
+<div class="container-product-edit">
+  <div class="content-header">
+    <h1 class="float-left">
+      Chi tiết đơn hàng
+      <small class="back"
+        ><i class="fa fa-arrow-circle-left"></i
+        ><a
+          href
+          [routerLink]="['/admin/order/list']"
+          routerLinkActive="router-link-active"
+          >Quay lại danh sách dơn hàng</a
+        ></small
+      >
+    </h1>
+  </div>
+  <br />
+  <div class="content">
+    <div class="container-fluid">
+      <div class="card-title">
+        <i class="fa fa-info"> Thông tin đơn hàng</i>
+      </div>
+      <div class="card-detail">
+        <div class="card-form">
+          <div class="form-group row">
+            <div class="col-md-3 text-right">
+              <label class="col-form-label" for="Name">Tên đơn hàng</label>
+            </div>
+            <label class="col-md-9 col-form-label"
+              >#{{ Order?.OrderId + " " + User?.Fullname }}
+            </label>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-md-3 text-right">
+              <label class="col-form-label" for="Name">Ngày tạo</label>
+            </div>
+            <label class="col-md-9 col-form-label">{{
+              Order?.OrderDate
+            }}</label>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-md-3 text-right">
+              <label class="col-form-label" for="Name">Tên khách hàng</label>
+            </div>
+            <label class="col-md-9 col-form-label">{{ User?.Fullname }}</label>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-3 text-right">
+              <label class="col-form-label" for="Name">Số điện thoại</label>
+            </div>
+            <label class="col-md-9 col-form-label">{{ User?.Phone }}</label>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-3 text-right">
+              <label class="col-form-label" for="Name">Địa chỉ</label>
+            </div>
+            <label class="col-md-9 col-form-label">{{ User?.Address }}</label>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-3 text-right">
+              <label class="col-form-label" for="Name">Giá trị dơn hàng</label>
+            </div>
+            <label class="col-md-9 col-form-label"
+              >{{ Order?.Total | currency: "VND":"" }} ₫</label
+            >
+          </div>
+          <div class="form-group row">
+            <div class="col-md-3 text-right">
+              <label class="col-form-label" for="Name"
+                >Tạng thái đơn hàng</label
+              >
+            </div>
+            <label class="col-md-9 col-form-label">{{ Order?.Period }}</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-table">
+    <div class="title"><p>Chi tiết đơn hàng</p></div>
+    <table class="card-product col-md-12 table table-striped">
+      <thead>
+        <tr>
+          <th style="width: 100px">Hình ảnh</th>
+          <th>Tên sản phẩm</th>
+          <th style="text-align: center">Giá</th>
+          <th style="text-align: center">Số lượng</th>
+          <th style="text-align: center">Tổng giá</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let item of OrderDetail
+              | paginate
+                : {
+                    itemsPerPage: 10,
+                    currentPage: page,
+                    totalItems: totalLength
+                  };
+            let j = index
+          "
+          style="line-height: 100px"
+        >
+          <td>
+            <img
+              src="https://localhost:44376/Upload/images/{{ Product[j]?.Image }}
+              "
+              alt=""
+              style="width: 100px"
+            />
+          </td>
+          <td>{{ Product[j]?.ProductName }}</td>
+          <td style="text-align: center">
+            {{ item.Price | currency: "VND":"" }} ₫
+          </td>
+          <td style="text-align: center">{{ item.Quantity }}</td>
+          <td style="text-align: center">
+            {{ item.Quantity * item.Price | currency: "VND":"" }} ₫
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <pagination-controls
+      previousLabel=""
+      nextLabel=""
+      class="text-center my-pagination"
+      (pageChange)="page = $event"
+    ></pagination-controls>
+  </div>
+</div>

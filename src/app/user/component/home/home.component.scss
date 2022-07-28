@@ -1,0 +1,418 @@
+/* .duoinavbar */
+.duoinavbar {
+  background-color: #cf111a;
+}
+
+.benphai.float-right {
+  line-height: 40px;
+  font-size: 14px;
+}
+
+.noidungheader i {
+  padding-left: 14px;
+}
+.noidungheader {
+  padding-top: 8px;
+}
+.danhmuc {
+  width: max-content;
+}
+.categoryheader {
+  height: 40px;
+  background-color: #aa1318;
+}
+
+.duoinavbar .container .row {
+  height: 40px;
+}
+
+.duoinavbar {
+  height: 40px;
+}
+
+.hotline {
+  display: inline-block;
+  position: relative;
+  margin-right: 11px;
+}
+
+.hotline:after {
+  content: "|";
+  position: absolute;
+  color: white;
+  top: -1px;
+  right: -10px;
+  font-size: 22px;
+}
+
+.benphai a {
+  color: white;
+}
+/* het css .duoinavbar  */
+
+/* danhmucan */
+
+.categorycontent ul li ul li:first-child {
+  margin-top: 3px;
+}
+
+.categorycontent ul li ul li.liheader {
+  margin-top: 16px;
+}
+
+ul li a.header {
+  font-size: 15px;
+  padding-left: 33px;
+  color: #cf111a;
+}
+
+.categorycontent ul li ul .content {
+  float: left;
+
+  width: 300px;
+  height: 265px;
+}
+
+.categorycontent ul li ul .content.phai {
+  padding-left: 0xp;
+  float: right;
+}
+
+.categorycontent ul li ul .content li a:hover {
+  color: #f5a623;
+}
+/* danhmucan */
+
+/* css cho carousel */
+// .nutcarousel.carousel-indicators li {
+//   height: 8px;
+//   width: 8px;
+//   border-radius: 50%;
+// }
+
+/* css cho _1khoi */
+
+._1khoi h1.header {
+  font-size: 20px;
+}
+
+._1khoi h2.header {
+  font-size: 20px;
+}
+
+/* css cho nut xem tat ca  */
+a.btn.btn-warning.btn-sm.text-white {
+  height: 25px;
+  width: 77px;
+  background: #f5a623;
+  font-size: 11px;
+}
+/* het css cho nut xem tat ca  */
+
+.card:hover .anh {
+  top: 5px;
+}
+
+img.card-img-top.anh {
+  position: relative;
+  top: 15px;
+  transition: 0.3s;
+}
+
+ul span.text-muted {
+  font-size: 11px;
+  padding-top: 6px;
+  padding-left: 12px;
+  color: #919191 !important;
+}
+
+i.fa.fa-star {
+  font-size: 10px;
+  color: #bebebe;
+}
+
+li.active .fa-star {
+  color: #f5a623;
+}
+
+.sale {
+  background: #f5a623;
+  border-radius: 6px;
+  font-size: 11px;
+  color: white;
+  padding: 1px 4px;
+  position: absolute;
+  right: 0;
+  top: 2px;
+}
+
+.giacu.text-muted {
+  font-size: 13px;
+  color: #919191 !important;
+}
+
+.giamoi {
+  color: red;
+  font-size: 14px;
+  font-weight: 500;
+  padding-right: 10px;
+}
+
+.gia.d-flex {
+  position: relative;
+}
+
+small.tacgia.text-muted {
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  transition: 0.3s;
+  padding: 3px 0px;
+}
+
+h3.card-title.ten {
+  font-weight: 400;
+  margin-bottom: 4px;
+  font-size: 15px;
+  height: 35px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  transition: 0.3s;
+}
+
+.card-body.noidungsp {
+  padding: 10px 10px 0px 10px;
+}
+
+.card {
+  border-radius: 0;
+}
+
+.card:hover .ten {
+  color: #f5a623;
+}
+
+/* het css cho _1khoi  */
+
+/* css cho margin slick */
+.card {
+  margin: 0 10px;
+}
+.categories {
+  margin-top: 8px;
+  width: 100%;
+}
+@media only screen and (max-width: 1200px) {
+  .categories {
+    display: none;
+  }
+
+  .noidungheader {
+    width: max-content;
+    padding-top: 8px;
+  }
+
+  .categoryheader {
+    height: 40px;
+    background-color: #aa1318;
+    padding-right: 8px;
+    width: max-content;
+  }
+
+  .noidungheader:hover {
+    cursor: pointer;
+  }
+
+  .noidungheader:hover .categories {
+    width: 100%;
+
+    z-index: 99;
+    display: block;
+  }
+}
+@media only screen and (max-width: 992px) {
+  .categories {
+    display: none;
+  }
+
+  .noidungheader {
+    padding-top: 8px;
+  }
+
+  .categoryheader {
+    height: 40px;
+    padding-right: 8px;
+    width: max-content;
+  }
+
+  .noidungheader:hover {
+    cursor: pointer;
+  }
+
+  .noidungheader:hover .categories {
+    width: 100%;
+
+    z-index: 99;
+    display: block;
+  }
+}
+.product-container {
+  .container {
+    text-align: center;
+    .add-cart {
+      position: absolute;
+      width: 100%;
+      display: none;
+      margin-top: 10px;
+      margin-left: 10px;
+      z-index: 99;
+      i {
+        font-size: 60px;
+        color: rgb(13, 226, 155);
+      }
+    }
+    .card-item:hover .add-cart {
+      display: block;
+    }
+    .card-item {
+      text-align: left;
+      border: 0.5px solid rgb(97, 96, 96);
+      width: 70%;
+      display: inline-block;
+      margin-bottom: 5px;
+    }
+
+    .card-item:hover {
+      cursor: pointer;
+      .card-img-top {
+        top: 5px;
+      }
+      .ten {
+        color: #f5a623;
+      }
+    }
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .product-container {
+    height: 320px;
+    width: 100%;
+
+    .container {
+      width: 100%;
+      padding: 0px;
+      height: 320px;
+      .add-cart {
+        position: absolute;
+
+        display: none;
+        margin-top: 10px;
+        margin-left: 160px;
+        z-index: 99;
+        i {
+          font-size: 30px;
+          color: rgb(13, 226, 155);
+        }
+      }
+      .card-item:hover .add-cart {
+        display: block;
+      }
+      .card-item {
+        border: 0.5px solid rgb(97, 96, 96);
+        width: 18%;
+        height: 100%;
+        float: left;
+        margin-left: 18px;
+      }
+      .card-img-top {
+        height: 180px;
+      }
+      .card-item:hover {
+        cursor: pointer;
+        .card-img-top {
+          top: 5px;
+        }
+        .ten {
+          color: #f5a623;
+        }
+      }
+    }
+  }
+}
+
+/* css cho 1 khoi san pham - slick */
+/*sach moi*/
+.sachmoi {
+  margin-top: 10px;
+}
+/* css rieng cho phan combo phat hanh - card-border*/
+.combohot {
+  padding-top: 20px;
+  .card-body {
+    padding-left: 20px;
+    .d-flex {
+      padding-left: 0px;
+    }
+  }
+}
+.combohot .card {
+  border: none;
+}
+.sapphathanh {
+  padding-top: 20px;
+  margin-bottom: 10px;
+}
+.sapphathanh .card {
+  border: none;
+}
+/* het css cho phan combo  */
+
+// /* css cho khoi sach nen doc  */
+// .sachnendoc {
+//   padding-top: 20px;
+// }
+// .sachnendoc .card-body.noidungsp.mt-3 {
+//   padding: 10px 0 10px 0;
+// }
+
+// .sachnendoc a.detail {
+//   font-size: 13px;
+//   text-decoration: none;
+//   color: #f5a623;
+// }
+
+// .sachnendoc .thoigian {
+//   display: inline-block;
+//   padding-top: 7px;
+// }
+
+// .sachnendoc h3.card-title.ten {
+//   margin-top: -12px;
+// }
+
+// .sachnendoc img.card-img-top.anh {
+//   position: static;
+//   border-radius: 0;
+// }
+
+// .sachnendoc .card {
+//   margin: 0;
+//   border: none;
+// }
+
+// hr {
+//   margin-bottom: 0;
+//   position: relative;
+//   top: -31px;
+// }
+
+// .sachnendoc .col-lg {
+//   padding-bottom: 30px;
+// }
+// /* het css cho khoi sach nen doc  */

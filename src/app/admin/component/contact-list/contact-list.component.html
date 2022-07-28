@@ -1,0 +1,79 @@
+<form class="container-product" #DeleteForm="ngForm">
+  <div class="content-header">
+    <h1 class="float-left">Liên hệ</h1>
+    <div style="display: inline-block">
+      <!-- <div
+        class="btn btn-primary text-white"
+        [routerLink]="['/admin/account/create']"
+        routerLinkActive="router-link-active"
+      >
+        <i class="fa fa-plus-square text-white"></i> Thêm mới
+      </div>
+      <div
+        class="btn btn-info"
+        [routerLink]="['/admin/account/trash']"
+        routerLinkActive="router-link-active"
+      >
+        <i class="fa fa-trash text-white"></i> Thùng rác
+      </div>
+      <div class="btn btn-danger" type="submit" (click)="DeleteAccount()">
+        <i class="fa fa-trash text-white"></i> Xóa (chọn)
+      </div>
+      <div class="btn btn-warning" type="submit" (click)="TogglleStatus()">
+        <i class="fal fa-toggle-off text-white">Thay đổi trạng thái</i>
+      </div> -->
+    </div>
+  </div>
+  <br />
+  <div class="container-content">
+    <div class="card-table">
+      <div class="title"><p>Danh sách liên hệ</p></div>
+      <table class="card-product col-md-12 table table-striped">
+        <thead>
+          <tr>
+            <th style="text-align: center">Tiêu đề</th>
+            <th style="text-align: center">Họ tên</th>
+            <th style="text-align: center">Số điện thoại</th>
+            <th style="text-align: center">Email</th>
+            <th style="text-align: center">Địa chỉ</th>
+            <th style="text-align: center">Nội dung</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="
+              let item of contact
+                | paginate
+                  : {
+                      itemsPerPage: 10,
+                      currentPage: page,
+                      totalItems: totalLength
+                    };
+              let i = index
+            "
+            style="line-height: 100px"
+          >
+            <td>{{ item.Title }}</td>
+            <td>{{ item.Fullname }}</td>
+            <td>{{ item.Phone }}</td>
+            <td style="text-align: center">
+              {{ item.Email }}
+            </td>
+            <td style="text-align: center">
+              {{ item.Address }}
+            </td>
+            <td style="text-align: center; max-width: 600px">
+              {{ item.Content }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <pagination-controls
+        previousLabel=""
+        nextLabel=""
+        class="text-center my-pagination"
+        (pageChange)="page = $event"
+      ></pagination-controls>
+    </div>
+  </div>
+</form>

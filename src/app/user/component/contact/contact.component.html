@@ -1,0 +1,109 @@
+<!-- thanh "danh muc sach" đã được ẩn bên trong + hotline + ho tro truc tuyen -->
+<section class="duoinavbar">
+  <div class="container text-white">
+    <div class="row justify">
+      <div class="col-lg-3 col-md-5">
+        <div class="categoryheader">
+          <div class="noidungheader text-white">
+            <div class="title-cat">
+              <i class="fa fa-bars"></i>
+              <span class="text-uppercase font-weight-bold ml-1"
+                >Danh mục sách</span
+              >
+            </div>
+            <div class="categories">
+              <app-categories></app-categories>
+            </div>
+          </div>
+          <!-- CATEGORIES -->
+        </div>
+      </div>
+      <div class="col-md-5 ml-auto contact d-none d-md-block">
+        <div class="benphai float-right">
+          <div class="hotline">
+            <i class="fa fa-phone"></i>
+            <span>Hotline:<b>1900 1999</b> </span>
+          </div>
+          <i class="fas fa-comments-dollar"></i>
+          <a
+            href=""
+            [routerLink]="['/contact']"
+            routerLinkActive="router-link-active"
+          >
+            Liên hệ
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="container contact">
+  <div class="col-md-12 mt-4">
+    <h1 class="text-center" style="font-weight: 500">Liên hệ</h1>
+    <br />
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="title">Tiêu đề</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          formControlName="title"
+          placeholder="Tiêu đề"
+        />
+      </div>
+      <div class="form-group">
+        <label for="fullname  ">Họ tên:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="fullname"
+          formControlName="fullname"
+          placeholder="Nhập họ tên"
+        />
+      </div>
+      <div class="form-group">
+        <label for="phone">số điện thoại:</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="phone"
+          id="phone"
+          placeholder="Nhập số điện thoại"
+        />
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          formControlName="email"
+          class="form-control"
+          id="email"
+          placeholder="Email"
+        />
+      </div>
+      <div class="form-group">
+        <label for="address">Địa chỉ:</label>
+        <input
+          type="text"
+          formControlName="address"
+          class="form-control"
+          id="address"
+          placeholder="địa chỉ"
+        />
+      </div>
+      <div class="form-group">
+        <label for="content">Nội dung:</label>
+        <textarea
+          type="textarea"
+          formControlName="content"
+          class="form-control"
+          id="content"
+          placeholder="Nhập nội dung"
+        ></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Gửi</button>
+    </form>
+  </div>
+</section>

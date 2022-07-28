@@ -1,0 +1,155 @@
+<div (scroll)="onScroll($event)" [ngClass]="{ sticky: turnOn }">
+  <!-- code cho nut like share facebook  -->
+  <div id="fb-root"></div>
+
+  <!-- header -->
+  <nav class="navbar navbar-expand-md bg-white navbar-light">
+    <div class="container">
+      <!-- logo  -->
+      <a
+        class="navbar-brand"
+        [routerLink]="['/']"
+        routerLinkActive="router-link-active"
+        style="color: #cf111a"
+        ><b>ZGen</b>.xyz</a
+      >
+
+      <!-- navbar-toggler  -->
+      <button
+        class="navbar-toggler d-lg-none"
+        type="button"
+        data-toggle="collapse"
+        data-target="#collapsibleNavId"
+        aria-controls="collapsibleNavId"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="collapsibleNavId">
+        <!-- form tìm kiếm  -->
+        <form class="form-inline ml-auto my-2 my-lg-0 mr-3">
+          <div class="input-group" style="width: 520px; align-items: center">
+            <app-combo-box
+              (ProductName)="addProductName($event)"
+            ></app-combo-box>
+            <div
+              class="input-group-append"
+              *ngIf="productName"
+              [routerLink]="['/tim-kiem/', productName]"
+              routerLinkActive="router-link-active"
+            >
+              <button
+                type="submit"
+                class="btn"
+                style="background-color: #cf111a; color: white"
+              >
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+            <div class="input-group-append" *ngIf="!productName">
+              <button
+                type="button"
+                class="btn"
+                style="background-color: #cf111a; color: white"
+              >
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <!-- ô đăng nhập đăng ký giỏ hàng trên header  -->
+        <ul class="navbar-nav mb-1 ml-auto">
+          <div class="logout" *ngIf="validLogin">
+            <li
+              class="nav-item account d-flex"
+              type="button"
+              class="btn dropdown"
+              data-toggle="dropdown"
+            >
+              <a href="#" class="btn btn-secondary rounded-circle">
+                <i class="fa fa-user"></i>
+              </a>
+              <div class="info-logout" style="float: right">
+                <a
+                  class="nav-link text-dark text-uppercase username"
+                  href="tai-khoan.html"
+                  [routerLink]="['/thong-tin-chi-tiet']"
+                  routerLinkActive="router-link-active"
+                  >{{ user?.Fullname }}</a
+                >
+                <a class="nav-link text-dark logout" href="#" (click)="LogOut()"
+                  >Thoát <i class="fa fa-sign-out"></i
+                ></a>
+              </div>
+            </li>
+          </div>
+          <div class="dropdown" *ngIf="!validLogin">
+            <li
+              class="nav-item account"
+              type="button"
+              class="btn dropdown"
+              data-toggle="dropdown"
+            >
+              <a href="#" class="btn btn-secondary rounded-circle">
+                <i class="fa fa-user"></i>
+              </a>
+              <a
+                class="nav-link text-dark text-uppercase"
+                href="#"
+                style="display: inline-block"
+                >Tài khoản</a
+              >
+            </li>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a
+                class="dropdown-item nutdangky text-center mb-2"
+                href="#"
+                data-toggle="modal"
+                data-target="#formdangky"
+                [routerLink]="['/dang-ky']"
+                >Đăng ký</a
+              >
+              <a
+                class="dropdown-item nutdangnhap text-center"
+                href="#"
+                data-toggle="modal"
+                data-target="#formdangnhap"
+                [routerLink]="['/dang-nhap']"
+                >Đăng nhập</a
+              >
+            </div>
+          </div>
+
+          <li
+            class="nav-item giohang"
+            [routerLink]="['/gio-hang']"
+            routerLinkActive="router-link-active"
+          >
+            <a class="btn btn-secondary rounded-circle">
+              <i class="fa fa-shopping-cart"></i>
+              <div class="cart-amount">{{ totalItem }}</div>
+            </a>
+            <a
+              class="nav-link text-dark giohang text-uppercase"
+              style="display: inline-block"
+              >Giỏ Hàng</a
+            >
+          </li>
+          <li
+            *ngIf="Role === 1"
+            class="nav-item admin"
+            [routerLink]="['/admin']"
+            routerLinkActive="router-link-active"
+          >
+            <a class="btn btn-secondary rounded-circle">
+              <i class="fa fa-cogs" style="color: black"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>

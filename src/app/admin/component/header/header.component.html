@@ -1,0 +1,35 @@
+<div class="header">
+  <div class="nav-menu">
+    <ul class="nav-left">
+      <li (click)="toggle()" class="menu"><i class="fa fa-bars"></i></li>
+      <!-- <li [routerLink]="['admin/Home']" routerLinkActive="router-link-active">
+        Home
+      </li>
+      <li>Contact</li> -->
+    </ul>
+    <ul
+      class="nav-right"
+      [routerLink]="['/admin/profile']"
+      routerLinkActive="router-link-active"
+    >
+      <li>{{ user?.Fullname }}</li>
+      <li class="logout" (click)="LogOut()">Logout</li>
+    </ul>
+  </div>
+  <!-- <div class="search">
+    <form class="form-inline ml-auto my-2 my-lg-0 mr-3">
+      <div class="input-group" style="width: 520px; align-items: center">
+        <app-combobox></app-combobox>
+        <div class="input-group-append">
+          <button
+            type="button"
+            class="btn"
+            style="background-color: #cf111a; color: white"
+          >
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div> -->
+</div>

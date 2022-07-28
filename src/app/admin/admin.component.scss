@@ -1,0 +1,12 @@
+.container-right {
+  float: right;
+  width: 86%;
+  background-color: rgba(234, 244, 255, 0.589);
+  height: max-content;
+  overflow-inline: scroll;
+}
+.nav-dashboard {
+  position: fixed;
+  z-index: 99;
+  width: 14%;
+}

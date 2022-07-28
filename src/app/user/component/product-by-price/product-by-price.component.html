@@ -1,0 +1,293 @@
+<!-- thanh "danh muc sach" đã được ẩn bên trong + hotline + ho tro truc tuyen -->
+<section class="duoinavbar">
+  <div class="container text-white">
+    <div class="row justify">
+      <div class="col-lg-3 col-md-5">
+        <div class="categoryheader">
+          <div class="noidungheader text-white">
+            <div class="title-cat">
+              <i class="fa fa-bars"></i>
+              <span class="text-uppercase font-weight-bold ml-1"
+                >Danh mục sách</span
+              >
+            </div>
+            <div class="categories">
+              <app-categories></app-categories>
+            </div>
+          </div>
+          <!-- CATEGORIES -->
+        </div>
+      </div>
+      <div class="col-md-5 ml-auto contact d-none d-md-block">
+        <div class="benphai float-right">
+          <div class="hotline">
+            <i class="fa fa-phone"></i>
+            <span>Hotline:<b>1900 1999</b> </span>
+          </div>
+          <i class="fas fa-comments-dollar"></i>
+          <a
+            href=""
+            [routerLink]="['/contact']"
+            routerLinkActive="router-link-active"
+          >
+            Liên hệ
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- breadcrumb  -->
+<section class="breadcrumbbar">
+  <div class="container col-10">
+    <ol class="breadcrumb mb-0 p-0 bg-transparent">
+      <li class="breadcrumb-item">
+        <a [routerLink]="['/']" routerLinkActive="router-link-active"
+          >Trang chủ</a
+        >
+      </li>
+      <li class="breadcrumb-item active">
+        <a href="user/productByPrice/20">Sản phẩm giảm giá</a>
+      </li>
+    </ol>
+  </div>
+</section>
+<section class="content my-2">
+  <div class="container col-10">
+    <div class="float-left" style="min-width: 200px">
+      <div>
+        <p style="font-weight: 500; font-size: 16px">Danh mục sản phẩm</p>
+        <div class="nav-cat">
+          <div
+            *ngFor="let item of listCat"
+            [routerLink]="[
+              '/san-pham-nhom/' +
+                ChangeProductName(item.CatName) +
+                '/' +
+                item.CatId
+            ]"
+            routerLinkActive="router-link-active"
+          >
+            <input type="checkbox" [value]="item.CatId" />
+            <label> {{ item.CatName }}</label>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div>
+        <p style="font-weight: 500; font-size: 16px">Thương hiệu</p>
+        <form class="nav-cat">
+          <div *ngFor="let brand of brands; let i = index">
+            <input
+              type="checkbox"
+              [value]="brand.BrandId"
+              [id]="brand?.BrandId"
+              [name]="brand?.BrandId"
+            />
+            <label [for]="brand?.BrandId" (click)="checkBrand(brand)">
+              {{ brand.BrandName }}
+            </label>
+          </div>
+        </form>
+      </div>
+      <br />
+      <div>
+        <p style="font-weight: 500; font-size: 16px">Xuất xứ</p>
+        <form class="nav-cat">
+          <div *ngFor="let item of origin; let i = index">
+            <input type="checkbox" [value]="item" [id]="item" [name]="item" />
+
+            <label [for]="item" (click)="checkOrigin(item)"> {{ item }}</label>
+          </div>
+        </form>
+      </div>
+      <br />
+      <div
+        style="padding: 0px 30px 0px 0px; margin-left: -60px"
+        *ngIf="productList.length > 0"
+      >
+        <p style="font-weight: 500; font-size: 16px; margin-left: 60px">
+          Giới hạn giá
+        </p>
+        <ngx-slider
+          [(value)]="minValue"
+          [(highValue)]="maxValue"
+          [options]="options"
+        ></ngx-slider>
+
+        <br />
+        <button class="btn btn-primary float-right" (click)="change()">
+          Tìm kiếm
+        </button>
+      </div>
+    </div>
+    <div class="container">
+      <div>
+        <p style="font-weight: 500; font-size: 24px">Sản phẩm giảm giá</p>
+      </div>
+      <br />
+      <div class="noidung bg-white">
+        <div>Có {{ productList.length }} sản phẩm!!</div>
+        <!-- header của khối sản phẩm : tag(tác giả), bộ lọc và sắp xếp  -->
+        <div class="header-khoi-sp d-flex">
+          <div class="sort d-flex ml-auto">
+            <div class="hien-thi">
+              <label
+                for="hienthi-select"
+                class="label-select"
+                style="margin-right: 5px"
+                >Hiển thị
+              </label>
+              <select
+                class="hienthi-select"
+                style="margin-right: 5px"
+                (change)="onChangeHidden($event)"
+              >
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+              </select>
+            </div>
+            <div class="sap-xep">
+              <label
+                for="sapxep-select"
+                class="label-select"
+                style="margin-right: 5px"
+                >Sắp xếp</label
+              >
+              <select
+                class="sapxep-select"
+                [(ngModel)]="sortProduct"
+                (change)="onChangeOption($event)"
+              >
+                <option value="">--Sắp xếp--</option>
+                <option value="lowToHigh">Giá: Thấp - Cao</option>
+                <option value="highToLow">Giá: Cao - Thấp</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <!-- các sản phẩm  -->
+        <div class="items">
+          <div class="row">
+            <div
+              class="col-lg-3 col-md-4 col-xs-6"
+              *ngFor="
+                let item of productList
+                  | paginate
+                    : {
+                        itemsPerPage: selected,
+                        currentPage: page,
+                        totalItems: totalLength
+                      }
+              "
+            >
+              <div class="card">
+                <a
+                  [routerLink]="[
+                    '/chi-tiet/' +
+                      ChangeProductName(item.ProductName) +
+                      '/' +
+                      item.ProductId
+                  ]"
+                  routerLinkActive="router-link-active"
+                  class="motsanpham"
+                  style="text-decoration: none; color: black"
+                  data-toggle="tooltip"
+                  data-placement="bottom"
+                >
+                  <img
+                    class="card-img-top anh"
+                    src="https://localhost:44376/Upload/images/{{
+                      item.Image
+                    }} "
+                    alt="{{ item.Image }}"
+                  />
+                  <div class="card-body noidungsp mt-3">
+                    <h3 class="card-title ten">
+                      {{ item.ProductName }}
+                    </h3>
+                    <small class="tacgia text-muted">{{ item.Origin }}</small>
+                    <div class="gia d-flex align-items-baseline">
+                      <div class="giamoi">
+                        {{ item.PriceDiscount | currency: "VND":"" }} ₫
+                      </div>
+                      <div class="giacu text-muted">
+                        <del>{{ item.Price | currency: "VND":"" }} ₫</del>
+                      </div>
+                      <div class="sale">
+                        {{
+                          ((item.PriceDiscount - item.Price) / item.Price) * 100
+                            | currency: "VND":""
+                        }}%
+                      </div>
+                    </div>
+                    <!-- <div class="danhgia">
+                      <ul class="d-flex" style="list-style: none">
+                        <li class="active"><i class="fa fa-star"></i></li>
+                        <li class="active"><i class="fa fa-star"></i></li>
+                        <li class="active"><i class="fa fa-star"></i></li>
+                        <li class="active"><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><span class="text-muted">0 nhận xét</span></li>
+                      </ul>
+                    </div> -->
+                  </div>
+                </a>
+                <button
+                  class="btn btn-primary mb-2 mt-2"
+                  (click)="addToCart(item)"
+                >
+                  Thêm vào giỏ hảng
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- pagination bar -->
+        <div class="pagination-bar my-3">
+          <div class="row">
+            <div class="col-12">
+              <!-- <nav>
+              <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                  <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                </li>
+                <li class="page-item active">
+                  <a class="page-link" href="#">1</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&rsaquo;</span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </li>
+              </ul>
+            </nav> -->
+              <pagination-controls
+                previousLabel=""
+                nextLabel=""
+                class="text-center my-pagination"
+                (pageChange)="page = $event"
+              ></pagination-controls>
+            </div>
+          </div>
+        </div>
+
+        <!--het khoi san pham-->
+      </div>
+    </div>
+  </div>
+</section>

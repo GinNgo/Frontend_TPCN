@@ -1,0 +1,162 @@
+/* css category  */
+.categorycontent {
+  border: 1px solid #b4b2b2;
+  box-sizing: border-box;
+  height: 387px;
+  background: white;
+}
+
+.categorycontent ul {
+  list-style: none;
+  background: white;
+  padding-left: 0px;
+}
+
+.categorycontent > ul > li:hover {
+  background-color: #cf111a;
+  cursor: pointer;
+}
+
+.categorycontent > ul > li:hover > a {
+  color: white;
+}
+
+.categorycontent ul li:hover i.fa.fa-chevron-right {
+  color: white;
+}
+
+.categorycontent > ul > li {
+  border-bottom: 1px solid #f8e1e1;
+  height: 35px;
+}
+
+.categorycontent > ul > li:last-child {
+  border-bottom: none;
+}
+
+.categorycontent ul li a {
+  line-height: 35px;
+  padding-left: 16px;
+  font-weight: 400;
+  font-size: 13px;
+}
+
+.categorycontent ul li ul {
+  display: none;
+  height: 386px;
+  width: 300px;
+  border: 1px solid #d1d1d1;
+  position: absolute;
+  z-index: 99;
+  top: 0px;
+  left: 0px;
+
+  box-shadow: 0px 1px 3px #e7dddd;
+  background-color: white;
+}
+
+.categorycontent ul li ul:hover {
+  cursor: auto;
+}
+
+.categorycontent ul li a {
+  text-decoration: none;
+  color: black;
+}
+
+.categorycontent ul li:hover ul {
+  display: block;
+}
+
+ul i.fa.fa-chevron-right {
+  font-size: 10px;
+  color: #d1d1d1;
+  line-height: 35px;
+  padding-right: 20px;
+}
+/* het css category  */
+/* css category  */
+.categorycontent {
+  border: 1px solid #b4b2b2;
+  box-sizing: border-box;
+  height: 387px;
+
+  position: relative;
+  z-index: 10;
+  background: white;
+}
+
+.categorycontent ul {
+  list-style: none;
+  background: white;
+}
+
+.categorycontent > ul > li:hover {
+  background-color: #cf111a;
+  cursor: pointer;
+}
+
+.categorycontent > ul > li:hover > a {
+  color: white;
+}
+
+.categorycontent ul li:hover i.fa.fa-chevron-right {
+  color: white;
+}
+
+.categorycontent > ul > li {
+  border-bottom: 1px solid #f8e1e1;
+  height: 35px;
+}
+
+.categorycontent > ul > li:last-child {
+  border-bottom: none;
+}
+
+.categorycontent ul li a {
+  line-height: 35px;
+  padding-left: 16px;
+  font-weight: 400;
+  font-size: 13px;
+}
+
+.categorycontent ul li ul {
+  display: none;
+  height: 387px;
+  width: 750px;
+  border: 1px solid #d1d1d1;
+  position: absolute;
+  z-index: 99;
+  top: -1px;
+
+  margin-left: 100%;
+  box-shadow: 0px 1px 3px #e7dddd;
+  background-color: white;
+}
+
+.categorycontent ul li ul:hover {
+  cursor: auto;
+}
+
+.categorycontent ul li a {
+  text-decoration: none;
+  color: black;
+}
+
+.categorycontent ul li:hover ul {
+  display: block;
+}
+
+ul i.fa.fa-chevron-right {
+  font-size: 10px;
+  color: #d1d1d1;
+  line-height: 35px;
+  padding-right: 20px;
+}
+/* het css category  */
+.categorycontent {
+  width: 100%;
+}
+.categorycontent a {
+  width: max-content;
+}

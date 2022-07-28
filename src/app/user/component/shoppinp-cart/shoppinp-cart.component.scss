@@ -1,0 +1,366 @@
+/* .duoinavbar  */
+.duoinavbar {
+  background-color: #cf111a;
+}
+
+.benphai.float-right {
+  line-height: 40px;
+  font-size: 14px;
+}
+
+.noidungheader {
+  padding-top: 8px;
+  .title-cat {
+    padding-left: 14px;
+  }
+}
+
+.categoryheader {
+  height: 40px;
+  background-color: #aa1318;
+}
+
+.duoinavbar .container .row {
+  height: 40px;
+}
+
+.duoinavbar {
+  height: 40px;
+}
+
+.hotline {
+  display: inline-block;
+  position: relative;
+  margin-right: 11px;
+}
+
+.hotline:after {
+  content: "|";
+  position: absolute;
+  color: white;
+  top: -1px;
+  right: -10px;
+  font-size: 22px;
+}
+
+.benphai a {
+  color: white;
+}
+/* het css .duoinavbar  */
+
+/*categories*/
+.categories {
+  margin-top: 8px;
+  display: none;
+}
+.noidungheader:hover {
+  cursor: pointer;
+  .categories {
+    z-index: 99;
+    display: block;
+  }
+}
+.btn-spin {
+  background: white;
+  border: 1px solid #ebebeb;
+}
+
+.btn-spin:hover {
+  cursor: pointer;
+  color: #2196f3;
+}
+.soluongsp {
+  width: 38px;
+  border: 1px solid #ebebeb;
+}
+/* danhmucan */
+
+.categorycontent ul li ul li:first-child {
+  margin-top: 3px;
+}
+
+.categorycontent ul li ul li.liheader {
+  margin-top: 16px;
+}
+
+ul li a.header {
+  font-size: 15px;
+  padding-left: 33px;
+  color: #cf111a;
+}
+
+.categorycontent ul li ul .content {
+  float: left;
+  margin-left: 19px;
+  width: 300px;
+  height: 265px;
+}
+
+.categorycontent ul li ul .content.phai {
+  margin-left: 100px;
+}
+
+.categorycontent ul li ul .content li a:hover {
+  color: #f5a623;
+}
+
+.categorycontent {
+  display: none;
+}
+
+.categoryheader:hover .categorycontent {
+  display: block;
+}
+/*het danhmucan */
+
+/* css cho dichvu  */
+.dichvu p.detail {
+  font-size: 12px;
+  margin-bottom: 1px;
+  width: 198px;
+}
+
+.dichvu {
+  padding: 24px 0px 24px;
+}
+
+.dichvu h6.tieude {
+  font-size: 14px;
+  margin-bottom: 3px;
+}
+
+.dichvu .noidung {
+  width: 180px;
+}
+
+.dichvu img {
+  width: 57px;
+  height: 57px;
+  margin-right: 10px;
+}
+/* het css cho dichvu  */
+
+/* css cho footer  */
+.ptthanhtoan {
+  width: 200px;
+}
+
+footer .row a {
+  text-decoration: none;
+  display: block;
+  color: black;
+  transition: 0.3s;
+  padding-bottom: 5px;
+  font-size: 14px;
+}
+
+footer .row a:hover {
+  color: #f5a623;
+}
+
+footer .header {
+  font-size: 14px;
+  margin-bottom: 13px;
+}
+/* het css cho footer  */
+
+/* css cho breadcrumb  */
+.breadcrumbbar {
+  height: 40px;
+}
+
+.breadcrumb {
+  height: 40px;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  content: ">";
+}
+
+.breadcrumb-item a {
+  font-size: 12px;
+  color: #666666;
+  text-decoration: none;
+  transition: 0.2s;
+  line-height: 40px;
+}
+
+.breadcrumb-item a:hover {
+  color: #f5a623;
+}
+
+.breadcrumb-item.active a {
+  color: #f5a623;
+}
+/* het css cho breadcrumb  */
+
+/* <---css cho gio-hang -->  */
+
+/* css cho cart-content  */
+.item-info .ten {
+  text-decoration: none;
+  color: #282828;
+  display: block;
+}
+
+.item-price .remove {
+  cursor: pointer;
+  font-size: 18px;
+  color: #bebebe;
+}
+
+.giacu {
+  text-decoration: line-through;
+  color: #b6b6b6;
+}
+
+.item-price {
+  font-size: 14px;
+}
+
+.btn-spin {
+  padding: 0 4px;
+  height: 20px;
+  width: 17px;
+  background: #fefefe;
+  color: black;
+}
+
+.btn-spin:hover {
+  cursor: pointer;
+}
+
+.soluong .soluongsp {
+  width: 32px;
+  height: 20px;
+  border: 1px solid #d1d1d1;
+}
+
+.soluong .input-number {
+  width: 73px;
+  height: 20px;
+}
+
+.item-caption .item-info .ten {
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.header-gio-hang span {
+  color: #979797;
+}
+
+.header-gio-hang {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.cart-item a.img {
+  width: 90px;
+  height: auto;
+  border: 1px solid #c8c8c8;
+}
+
+.cart {
+  border-right: 1px solid #ebebeb;
+}
+
+.group strong {
+  font-size: 14px;
+}
+
+.tonggiatien .group .tongcong {
+  font-size: 19px;
+  color: red;
+  font-weight: 600;
+}
+
+.tonggiatien .group p {
+  margin: 0;
+  font-size: 13px;
+}
+
+.nutmuathem:hover {
+  background: #f5a623;
+  color: white;
+}
+
+.nutmuathem {
+  border: 1px solid #f5a623;
+  color: #f5a623;
+}
+/* het css cho cart-content  */
+
+/* css cho cart-steps  */
+
+.btn-checkout,
+.btn-shopping-without-signup {
+  padding: 12px;
+  letter-spacing: 0.08rem;
+  font-size: 80%;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+.btn-checkout:hover {
+  color: black !important;
+}
+
+/* het css cho cart-steps  */
+
+@media (max-width: 767px) {
+  .navbar form .input-group {
+    width: 100% !important;
+  }
+
+  .navbar ul li a.nav-link {
+    margin-left: 0.25rem !important;
+  }
+
+  .navbar ul li.account {
+    border-top: 1px dashed #cf111a;
+    border-bottom: 1px dashed #cf111a;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
+  }
+  .navbar ul li.giohang {
+    border-bottom: 1px dashed #cf111a;
+    padding-bottom: 0.5rem;
+    margin-right: 8px;
+  }
+  .categorycontent {
+    display: none;
+  }
+
+  .categoryheader:hover .categorycontent {
+    display: none;
+  }
+
+  /* giohang  */
+  .cart-content {
+    padding-right: 16px;
+  }
+
+  .cart-steps {
+    margin-left: 15px;
+  }
+  .cart-table {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: none;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 0.25em;
+  }
+  .center .btn {
+    font-size: 14px !important;
+    margin-top: 20px !important;
+    font-weight: 400;
+    padding: 12px 72px;
+    border-radius: 3px !important;
+  }
+}
+//---------------

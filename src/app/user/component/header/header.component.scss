@@ -1,0 +1,125 @@
+.navbar-nav li .nav-link {
+  font-size: 13px;
+  padding-top: 17px;
+  font-weight: 400;
+}
+
+.navbar input.form-control {
+  border: 2px solid #cf111a !important;
+}
+
+li.nav-item a {
+  transition: 0.2s;
+}
+
+li.nav-item:hover a {
+  color: #f5a623 !important;
+}
+.dropdown li a {
+  transition: 0.2s;
+}
+
+.dropdown div li:hover a {
+  color: #f5a623 !important;
+}
+a.nav-link {
+  padding-top: 8px;
+}
+
+a.navbar-brand {
+  font-size: 34px;
+}
+
+li.nav-item.account {
+  margin-right: 0.5rem;
+}
+
+a.nav-link {
+  margin-left: -0.5rem;
+}
+
+.navbar-expand-md .navbar-nav .nav-link.giohang {
+  padding-right: 0 !important;
+  margin-top: 6px;
+}
+.nav-item.giohang:hover {
+  cursor: pointer;
+}
+i.fa.fa-shopping-cart {
+  margin-left: -1px;
+  margin-top: 5px;
+  display: inline-block;
+}
+
+a.btn.btn-secondary.rounded-circle {
+  width: 42px;
+  height: 40px;
+  background-color: #dfdfdf;
+  border: #cacaca;
+}
+
+.cart-amount {
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+
+  background: #f5a623;
+  font-size: 12px;
+  position: relative;
+  left: 19px;
+  bottom: 32px;
+  transition: 0.2s;
+}
+
+.nav-item.giohang:hover .cart-amount {
+  background: #cf111a;
+  color: white;
+}
+
+.dropdown-menu {
+  padding: 11px;
+  width: 236px;
+}
+
+a.dropdown-item {
+  background: #f5a623;
+  border-radius: 4px;
+  font-size: 14px;
+  color: white;
+  padding: 9px;
+}
+
+a.dropdown-item:hover {
+  background: #f5a623;
+  color: white;
+  box-shadow: 0px 2px 5px #f5a623;
+}
+
+.navbar-nav .nav-item.active a {
+  color: #f5a623;
+}
+
+/* het css cho navbar  */
+.sticky {
+  position: fixed;
+  z-index: 999;
+  width: 100vw;
+  box-shadow: 0px 5px 20px grey;
+}
+.logout {
+  margin-top: 10px;
+  display: block;
+}
+
+.info-logout a.nav-link {
+  margin: 0 0 0 6px;
+  padding: 0 !important;
+}
+
+a.nav-link:hover {
+  color: #f5a623 !important;
+}
+.admin {
+  margin-top: 15px;
+  margin-left: 5px;
+}

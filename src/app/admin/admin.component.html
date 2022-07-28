@@ -1,0 +1,15 @@
+<!-- <div class="container-right">
+
+  <router-outlet> </router-outlet>
+</div>
+<div class="nav-dashboard">
+  <app-admindasboard></app-admindasboard>
+</div> -->
+
+<app-sidenav (onToggleSideNav)="onToggleSideNav($event)"> </app-sidenav>
+<app-body
+  [collapsed]="isSideNavCollapsed"
+  [screenWidth]="screenWidth"
+></app-body>
+<lib-ng-toast></lib-ng-toast>
+<app-button-scroll-admin></app-button-scroll-admin>

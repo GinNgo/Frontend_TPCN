@@ -1,0 +1,121 @@
+.container-product {
+  margin: 0px;
+  padding: 0px;
+
+  width: 100%;
+}
+.content-header {
+  padding: 15px;
+  height: 70px;
+  width: 100%;
+}
+.float-left {
+  height: 100%;
+  font-size: 1.6rem;
+  margin: 0;
+  padding-left: 10px;
+  font-weight: 400;
+  line-height: 1.2;
+  float: left;
+  color: inherit;
+}
+.float-right {
+  margin-right: -170px;
+}
+.btn {
+  margin-left: 10px;
+}
+.card-search {
+  background: white;
+  margin: 0 30px;
+  border-radius: 8px;
+  padding: 15px;
+  i {
+    position: absolute;
+    padding-left: 10px;
+    line-height: 38px;
+    font-size: 24px;
+  }
+}
+.card-table {
+  display: flex;
+  flex-direction: column;
+  margin: 0 30px;
+  margin-top: 20px;
+  min-width: none;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 15px;
+  table tr,
+  td,
+  th {
+    border: 0.5px solid rgb(197, 195, 195);
+  }
+  table thead tr {
+    height: 30px;
+  }
+}
+.center .btn {
+  font-size: 14px !important;
+  margin-top: 20px !important;
+  font-weight: 400;
+  padding: 12px 72px;
+  border-radius: 3px !important;
+}
+//title-list
+.title {
+  margin-bottom: 5px;
+  p {
+    font-size: 20px;
+  }
+}
+
+td .detail {
+  cursor: pointer;
+}
+.backgroumd-cancel {
+  position: fixed;
+  opacity: 60%;
+  top: 0vh;
+  width: 100vw;
+  margin-left: -20px;
+  height: 100%;
+  background-color: rgb(144, 145, 145);
+}
+.form-cancel {
+  margin-left: 35%;
+  align-items: center;
+  display: flex;
+  margin-right: auto;
+  position: fixed;
+  z-index: 999;
+  width: 20%;
+  height: 30%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  top: 30vh;
+  .content {
+    position: absolute;
+    color: aqua;
+    font-size: 26px;
+    top: 10px;
+    width: 100%;
+    text-align: center;
+  }
+  textarea {
+    margin-top: -20px;
+    width: 100%;
+    border: 1px solid rgb(214, 214, 214);
+    position: absolute;
+  }
+  .container-submit {
+    position: absolute;
+    justify-items: center;
+    left: 25%;
+    top: 80%;
+  }
+}
